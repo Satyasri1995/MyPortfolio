@@ -1,0 +1,28 @@
+$text-sm:11px;
+$text-md:14px;
+$text-lg:16px;
+$text-lgx:20px;
+$text-xl:30px;
+$text-bold:500;
+$text-bolder:600;
+$text-thin:200;
+
+$text-primary:#78cc6d;
+$text-secondary:#50a3a2;
+$text-dark:#323232;
+$text-light-dark:#646464;
+$text-light:white;
+
+$text-link:cornflowerblue;
+
+$theme-color-dark:#50a3a2;
+$theme-color-light:#78cc6d;
+$theme-color-layer-1:white;
+$theme-color-black:#323232;
+$theme-color-black-light:#646464;
+
+
+$background:$theme-color-dark;
+$background-linear-gradient:linear-gradient(to bottom right, $theme-color-dark 0%, $theme-color-light 100%);
+
+$star-clip-path:polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);

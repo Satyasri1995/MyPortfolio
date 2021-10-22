@@ -1,0 +1,21 @@
+<article class="edit_container">
+    <div class="tab">
+        <button class="tablinks" onclick="openTab(event, 'basic_details')">Basic Details</button>
+        <button class="tablinks" onclick="openTab(event, 'about_details')">About</button>
+        <button class="tablinks" onclick="openTab(event, 'resume_details')">Resume</button>
+    </div>
+    <div id="basic_details" class="tabcontent">
+        <%- include('./../partials/basicDetails') %> 
+    </div>
+    <div id="about_details" class="tabcontent">
+        <%- include('./../partials/aboutMe') %> 
+        <%- include('./../partials/myServices') %> 
+        <%- include('./../partials/funFacts') %>
+        <%- include('./../partials/quote') %>
+    </div>
+    <div id="resume_details" class="tabcontent">
+        <%- include('./../partials/education') %> 
+        <%- include('./../partials/experience') %> 
+        <%- include('./../partials/language') %> 
+    </div>
+</article>

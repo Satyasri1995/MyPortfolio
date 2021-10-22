@@ -1,0 +1,62 @@
+input{
+    width: 20rem;
+    padding: 1rem;
+    border: 1px solid rgba($color: $theme-color-black-light, $alpha: 0.5);
+    &:focus{
+        outline: 2px solid $theme-color-light;
+        border: 1px solid rgba($color: $theme-color-black-light, $alpha: 0.5);
+    }
+}
+textarea{
+    height: 10rem;
+    padding: 1rem;
+    border: 1px solid rgba($color: $theme-color-black-light, $alpha: 0.5);
+    &:focus{
+        outline: 2px solid $theme-color-light;
+        border: 1px solid rgba($color: $theme-color-black-light, $alpha: 0.5);
+    }
+}
+
+
+
+.field{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+    font-size: $text-lgx;
+    & label{
+        margin-bottom: 10px;
+    }
+}
+
+.area_field{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+    font-size: $text-lgx;
+    width: 100%;
+    & label{
+        margin-bottom: 10px;
+    }
+}
+
+button[type='submit']{
+    padding: 10px 20px;
+    font-size: $text-lgx;
+    color: $text-dark;
+    background: transparent;
+    margin: 2rem 0rem;
+    &:hover{
+        color: $text-primary;
+        outline: 2px solid $theme-color-light;
+        border: 1px solid rgba($color: $theme-color-black-light, $alpha: 0.5);
+    }
+    border: 1px solid rgba($color: $theme-color-black-light, $alpha: 0.5);
+}
+
+.button-field{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 100%;
+}

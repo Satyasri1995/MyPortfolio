@@ -1,0 +1,39 @@
+<section class="education_details form_container mt-2">
+    <div class="title">
+        <span><span class="gradientText">E</span>ducation</span>
+        <span class="spacer"></span>
+        <a class="add noselect" id="addEducation" onclick="addEducation()">
+            <i class="fas fa-plus-circle"></i>&nbsp;Add Education
+        </a>
+        <a class="remove noselect"  id="removeEducation" onclick="removeEducation()">
+            <i class="fas fa-minus-circle"></i>&nbsp;Remove Education
+        </a>
+    </div>
+    <div class="miniForm" id="Education_FormContainer">
+        <form class="education_details_form form">
+            <div class="field">
+                <label for="start"><span class="gradientText">Start</span>&nbsp;Date</label>
+                <input type="date" name="start" id="start">
+            </div>
+            <div class="field">
+                <label for="end"><span class="gradientText">End</span>&nbsp;Date</label>
+                <input type="date" name="end" id="end">
+            </div>
+            <div class="field">
+                <label for="school"><span class="gradientText">S</span>chool</label>
+                <input type="text" name="school" id="school">
+            </div>
+            <div class="field">
+                <label for="location"><span class="gradientText">L</span>ocation</label>
+                <input type="text" name="location" id="location">
+            </div>
+            <div class="field">
+                <label for="description_education"><span class="gradientText">D</span>escription</label>
+                <textarea name="description" id="description_education" cols="30" rows="5"></textarea>
+            </div>
+            <div class="button-field">
+                <button type="submit"><i class="fas fa-save"></i>&nbsp;Save</button>
+            </div>
+        </form>
+    </div>
+</section>

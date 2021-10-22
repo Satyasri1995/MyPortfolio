@@ -1,0 +1,39 @@
+<section class="experience_details form_container mt-2">
+    <div class="title">
+        <span><span class="gradientText">E</span>xperience</span>
+        <span class="spacer"></span>
+        <a class="add noselect" id="addExperience" onclick="addExperience()">
+            <i class="fas fa-plus-circle"></i>&nbsp;Add Experience
+        </a>
+        <a class="remove noselect"  id="removeExperience" onclick="removeExperience()">
+            <i class="fas fa-minus-circle"></i>&nbsp;Remove Experience
+        </a>
+    </div>
+    <div class="miniForm" id="Experience_FormContainer">
+        <form class="experience_details_form form">
+            <div class="field">
+                <label for="start"><span class="gradientText">Start</span>&nbsp;Date</label>
+                <input type="date" name="start" id="start">
+            </div>
+            <div class="field">
+                <label for="end"><span class="gradientText">End</span>&nbsp;Date</label>
+                <input type="date" name="end" id="end">
+            </div>
+            <div class="field">
+                <label for="organisation"><span class="gradientText">O</span>rganisation</label>
+                <input type="text" name="organisation" id="organisation">
+            </div>
+            <div class="field">
+                <label for="job"><span class="gradientText">J</span>ob</label>
+                <input type="text" name="job" id="job">
+            </div>
+            <div class="field">
+                <label for="description_experience"><span class="gradientText">D</span>escription</label>
+                <textarea name="description" id="description_experience" cols="30" rows="5"></textarea>
+            </div>
+            <div class="button-field">
+                <button type="submit"><i class="fas fa-save"></i>&nbsp;Save</button>
+            </div>
+        </form>
+    </div>
+</section>

@@ -1,0 +1,65 @@
+.background {
+  width: 100vw;
+  height: 100vh;
+  background: $background;
+  background: $background-linear-gradient;
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  z-index: 0;
+}
+
+.bubbles {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 1;
+  list-style: none;
+  background: transparent;
+  overflow: hidden;
+  &__bubble {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    animation: linear 50s squares infinite;
+    top: -50%;
+    &:nth-child(1) {
+      left: percentage(random(100) / 100);
+      animation-delay: 0s;
+    }
+    &:nth-child(2) {
+      left: percentage(random(100) / 100);
+      animation-delay: 10s;
+    }
+    &:nth-child(3) {
+      left: percentage(random(100) / 100);
+      animation-delay: 5s;
+    }
+    &:nth-child(4) {
+      left: percentage(random(100) / 100);
+      animation-delay: 15s;
+    }
+  }
+}
+
+main {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: start;
+}
+

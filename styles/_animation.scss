@@ -1,0 +1,23 @@
+@keyframes squares {
+  0% {
+    top: -50%;
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(180deg) scale(3);
+  }
+  100% {
+    top: 150%;
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}

@@ -1,0 +1,31 @@
+<section class="my_codes_details form_container mt-2">
+    <div class="title">
+        <span><span class="gradientText">C</span>oding</span>
+        <span class="spacer"></span>
+        <a class="add noselect" id="addMycode" onclick="addMycode()">
+            <i class="fas fa-plus-circle"></i>&nbsp;Add Vode
+        </a>
+        <a class="remove noselect"  id="removeMycode" onclick="removeMycode()">
+            <i class="fas fa-minus-circle"></i>&nbsp;Remove Code
+        </a>
+    </div>
+    <div class="miniForm" id="mycode_FormContainer">
+        <form class="my_code_details_form form">
+            <div class="field">
+                <label for="icon_code"><span class="gradientText">I</span>con</label>
+                <input type="text" name="icon" id="icon_code">
+            </div>
+            <div class="field">
+                <label for="title_code"><span class="gradientText">T</span>itle</label>
+                <input type="text" name="title" id="title_code">
+            </div>
+            <div class="field">
+                <label for="star"><span class="gradientText">D</span>escription</label>
+                <input type="number" name="star" id="star">
+            </div>
+            <div class="button-field">
+                <button type="submit"><i class="fas fa-save"></i>&nbsp;Save</button>
+            </div>
+        </form>
+    </div>
+</section>

@@ -1,0 +1,27 @@
+<section class="fun_facts_details form_container mt-2">
+    <div class="title">
+        <span><span class="gradientText">Fun</span>&nbsp;Facts</span>
+        <span class="spacer"></span>
+        <a class="add noselect" id="addFunFact" onclick="addFunFact()">
+            <i class="fas fa-plus-circle"></i>&nbsp;Add Facts
+        </a>
+        <a class="remove noselect"  id="removeFunFact" onclick="removeFunFact()">
+            <i class="fas fa-minus-circle"></i>&nbsp;Remove Facts
+        </a>
+    </div>
+    <div class="miniForm" id="funFacts_FormContainer">
+        <form class="fun_facts_details_form form">
+            <div class="field">
+                <label for="icon_facts"><span class="gradientText">I</span>con</label>
+                <input type="text" name="icon" id="icon_facts">
+            </div>
+            <div class="field">
+                <label for="title_facts"><span class="gradientText">T</span>itle</label>
+                <input type="text" name="title" id="title_facts">
+            </div>
+            <div class="button-field">
+                <button type="submit"><i class="fas fa-save"></i>&nbsp;Save</button>
+            </div>
+        </form>
+    </div>
+</section>
