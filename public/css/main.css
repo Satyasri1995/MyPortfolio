@@ -29,16 +29,16 @@
     animation: linear 50s squares infinite;
     top: -50%; }
     .bubbles__bubble:nth-child(1) {
-      left: 73%;
+      left: 8%;
       animation-delay: 0s; }
     .bubbles__bubble:nth-child(2) {
-      left: 97%;
+      left: 6%;
       animation-delay: 10s; }
     .bubbles__bubble:nth-child(3) {
-      left: 93%;
+      left: 58%;
       animation-delay: 5s; }
     .bubbles__bubble:nth-child(4) {
-      left: 90%;
+      left: 30%;
       animation-delay: 15s; }
 
 main {
@@ -427,9 +427,12 @@ main {
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: space-between; }
+  .contact_form .field {
+    flex-grow: 1; }
+  .contact_form .field:first-child {
+    margin-right: 1rem; }
 
 input {
-  width: 20rem;
   padding: 1rem;
   border: 1px solid rgba(100, 100, 100, 0.5); }
   input:focus {
@@ -569,6 +572,20 @@ button[type='submit'] {
   overflow-y: auto;
   max-height: 90%;
   padding: 1rem; }
+
+.createAccount {
+  width: 20rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 2rem;
+  background: white; }
+  .createAccount input {
+    width: 100% !important; }
+  .createAccount button[type='submit'] {
+    width: 100%;
+    text-align: center; }
 
 * {
   margin: 0px;

@@ -364,4 +364,10 @@
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: space-between;
+  & .field{
+    flex-grow: 1;
+  }
+  & .field:first-child{
+    margin-right: 1rem;
+  }
 }
