@@ -71,11 +71,11 @@ function openTab(evt, tab) {
   var i, tabcontent, tablinks;
   tabcontent = document.getElementsByClassName("tabcontent");
   for (i = 0; i < tabcontent.length; i++) {
-      tabcontent[i].style.display = "none";
+    tabcontent[i].style.display = "none";
   }
   tablinks = document.getElementsByClassName("tablinks");
   for (i = 0; i < tablinks.length; i++) {
-      tablinks[i].className = tablinks[i].className.replace(" active", "");
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
   }
   document.getElementById(tab).style.display = "block";
   evt.currentTarget.className += " active";
@@ -101,17 +101,17 @@ function addMyService() {
       <button type="submit"><i class="fas fa-save"></i>&nbsp;Save</button>
   </div>
 </form>`;
-  container.innerHTML+=form;
-  document.getElementById('removeMyService').classList.remove('disabled');
+  container.innerHTML += form;
+  document.getElementById("removeMyService").classList.remove("disabled");
 }
 
-function removeMyService(){
+function removeMyService() {
   const container = document.getElementById("myService_FormContainer");
   const formLen = container.children.length;
-  if(formLen>1){
+  if (formLen > 1) {
     container.removeChild(container.lastElementChild);
-    if(container.children.length==1){
-      document.getElementById('removeMyService').classList.add('disabled');
+    if (container.children.length == 1) {
+      document.getElementById("removeMyService").classList.add("disabled");
     }
   }
 }
@@ -131,17 +131,17 @@ function addFunFact() {
       <button type="submit"><i class="fas fa-save"></i>&nbsp;Save</button>
   </div>
 </form>`;
-  container.innerHTML+=form;
-  document.getElementById('removeFunFact').classList.remove('disabled');
+  container.innerHTML += form;
+  document.getElementById("removeFunFact").classList.remove("disabled");
 }
 
-function removeFunFact(){
+function removeFunFact() {
   const container = document.getElementById("funFacts_FormContainer");
   const formLen = container.children.length;
-  if(formLen>1){
+  if (formLen > 1) {
     container.removeChild(container.lastElementChild);
-    if(container.children.length==1){
-      document.getElementById('removeFunFact').classList.add('disabled');
+    if (container.children.length == 1) {
+      document.getElementById("removeFunFact").classList.add("disabled");
     }
   }
 }
@@ -174,17 +174,17 @@ function addEducation() {
       <button type="submit"><i class="fas fa-save"></i>&nbsp;Save</button>
   </div>
 </form>`;
-  container.innerHTML+=form;
-  document.getElementById('removeEducation').classList.remove('disabled');
+  container.innerHTML += form;
+  document.getElementById("removeEducation").classList.remove("disabled");
 }
 
-function removeEducation(){
+function removeEducation() {
   const container = document.getElementById("Education_FormContainer");
   const formLen = container.children.length;
-  if(formLen>1){
+  if (formLen > 1) {
     container.removeChild(container.lastElementChild);
-    if(container.children.length==1){
-      document.getElementById('removeEducation').classList.add('disabled');
+    if (container.children.length == 1) {
+      document.getElementById("removeEducation").classList.add("disabled");
     }
   }
 }
@@ -217,17 +217,17 @@ function addExperience() {
       <button type="submit"><i class="fas fa-save"></i>&nbsp;Save</button>
   </div>
 </form>`;
-  container.innerHTML+=form;
-  document.getElementById('removeExperience').classList.remove('disabled');
+  container.innerHTML += form;
+  document.getElementById("removeExperience").classList.remove("disabled");
 }
 
-function removeExperience(){
+function removeExperience() {
   const container = document.getElementById("Experience_FormContainer");
   const formLen = container.children.length;
-  if(formLen>1){
+  if (formLen > 1) {
     container.removeChild(container.lastElementChild);
-    if(container.children.length==1){
-      document.getElementById('removeExperience').classList.add('disabled');
+    if (container.children.length == 1) {
+      document.getElementById("removeExperience").classList.add("disabled");
     }
   }
 }
@@ -256,17 +256,17 @@ function addLanguage() {
       <button type="submit"><i class="fas fa-save"></i>&nbsp;Save</button>
   </div>
 </form>`;
-  container.innerHTML+=form;
-  document.getElementById('removeLanguage').classList.remove('disabled');
+  container.innerHTML += form;
+  document.getElementById("removeLanguage").classList.remove("disabled");
 }
 
-function removeLanguage(){
+function removeLanguage() {
   const container = document.getElementById("language_FormContainer");
   const formLen = container.children.length;
-  if(formLen>1){
+  if (formLen > 1) {
     container.removeChild(container.lastElementChild);
-    if(container.children.length==1){
-      document.getElementById('removeLanguage').classList.add('disabled');
+    if (container.children.length == 1) {
+      document.getElementById("removeLanguage").classList.add("disabled");
     }
   }
 }
@@ -291,17 +291,29 @@ function addMycode() {
       <button type="submit"><i class="fas fa-save"></i>&nbsp;Save</button>
   </div>
 </form>`;
-  container.innerHTML+=form;
-  document.getElementById('removeMycode').classList.remove('disabled');
+  container.innerHTML += form;
+  document.getElementById("removeMycode").classList.remove("disabled");
 }
 
-function removeLanguage(){
+function removeLanguage() {
   const container = document.getElementById("mycode_FormContainer");
   const formLen = container.children.length;
-  if(formLen>1){
+  if (formLen > 1) {
     container.removeChild(container.lastElementChild);
-    if(container.children.length==1){
-      document.getElementById('removeMycode${formLen}').classList.add('disabled');
+    if (container.children.length == 1) {
+      document
+        .getElementById("removeMycode${formLen}")
+        .classList.add("disabled");
     }
+  }
+}
+
+function checkMessage(flag) {
+  if (flag == "true") {
+    document.getElementById("message").classList.remove("hide");
+    document.getElementById("message").classList.add("show");
+  } else {
+    document.getElementById("message").classList.remove("show");
+    document.getElementById("message").classList.add("hide");
   }
 }

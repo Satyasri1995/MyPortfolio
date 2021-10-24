@@ -7,6 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Page</title>
     <%- include("./../lib/lib") %>
+    <script>
+        window.addEventListener('load',function(){
+            checkMessage('<%= message.status!==undefined %>');
+        })
+    </script>
 </head>
 
 <body class="full-viewport">
@@ -20,7 +25,12 @@
             </ul>
         </div>
     </div>
-    <%- include('./../partials/createAccount') %> 
+    <%- include('./../partials/message',message) %> 
+    <% if (login) { %> 
+        <%- include('./../partials/login') %> 
+    <% }else{ %>
+        <%- include('./../partials/register') %>
+    <% } %>
 </body>
 
 </html>
