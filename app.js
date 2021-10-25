@@ -1,12 +1,18 @@
 const express = require("express");
 const path = require("path");
 const mongoose = require("mongoose");
+const session = require('express-session');
+const flash = require('connect-flash');
 
-const app = express();
 
 const authRoutes = require('./routes/auth');
 
+const app = express();
 app.use(express.static(path.join(__dirname, "public")));
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
+app.use(session({secret:'mysecret',resave:false,saveUninitialized:false}));
+app.use(flash());
 
 app.set("view engine", "ejs");
 app.set("views", "views");
@@ -19,26 +25,18 @@ app.use("/MyPortfolio", (req, res, next) => {
 });
 
 app.use("/", (req, res, next) => {
-  res.render("./pages/account" ,{
-    login:true,
-    message:{
-      status:'error',
-      content:'Testing tthe message...!'
-    }
-  });
+  res.redirect('/auth/signin');
 });
 
-app.listen(3000)
-
-// mongoose
-//   .connect(
-//     "mongodb+srv://SatyaApps:Satyasri1995@cluster0.ltyvt.mongodb.net/MyPortfolio?retryWrites=true&w=majority"
-//   )
-//   .then((result) => {
-//     app.listen(3000);
-//     console.log('Connected to Database !...');
-//   })
-//   .catch((error) => {
-//     console.log(error);
-//   });
+mongoose
+  .connect(
+    "mongodb+srv://SatyaApps:Satyasri1995@cluster0.ltyvt.mongodb.net/MyPortfolio?retryWrites=true&w=majority"
+  )
+  .then((result) => {
+    app.listen(3000);
+    console.log('Connected to Database !...');
+  })
+  .catch((error) => {
+    console.log(error);
+  });
 
