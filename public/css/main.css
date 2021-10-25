@@ -29,16 +29,16 @@
     animation: linear 50s squares infinite;
     top: -50%; }
     .bubbles__bubble:nth-child(1) {
-      left: 97%;
+      left: 7%;
       animation-delay: 0s; }
     .bubbles__bubble:nth-child(2) {
-      left: 56%;
+      left: 87%;
       animation-delay: 10s; }
     .bubbles__bubble:nth-child(3) {
-      left: 10%;
+      left: 79%;
       animation-delay: 5s; }
     .bubbles__bubble:nth-child(4) {
-      left: 26%;
+      left: 100%;
       animation-delay: 15s; }
 
 main {
@@ -669,6 +669,14 @@ button[type='submit'] {
   margin: 0px;
   padding: 0px;
   font-family: "Roboto", sans-serif; }
+
+.edit_Container {
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  transform: translate(-50%, -50%);
+  height: 80%;
+  width: 50%; }
 
 .gradientText {
   background: -webkit-linear-gradient(#78cc6d, #50a3a2);

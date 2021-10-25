@@ -15,6 +15,15 @@
   font-family: "Roboto", sans-serif;
 }
 
+.edit_Container{
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  transform: translate(-50%,-50%);
+  height: 80%;
+  width: 50%;
+}
+
 .gradientText {
   background: -webkit-linear-gradient($text-primary, $text-secondary);
   -webkit-background-clip: text;

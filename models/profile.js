@@ -56,11 +56,7 @@ const profile = new Schema({
           required:false,
           ref:'service'
       }
-  ],
-  user:{
-      type:mongoose.SchemaTypes.ObjectId,
-      required:true
-  }
+  ]
 
 });
 

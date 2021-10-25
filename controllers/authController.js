@@ -1,5 +1,6 @@
 const user = require("./../models/user");
 const messageModel = require("./../utils/models/message");
+const profile = require("./../models/profile");
 
 exports.login = (req, res, next) => {
   const { email, password } = { ...req.body };
@@ -9,14 +10,17 @@ exports.login = (req, res, next) => {
       email: email,
       password: password,
     })
-    .then((result) => {
-      if (!result) {
+    .then((userR) => {
+      if (!userR) {
+        message = new messageModel(
+          "error",
+          "No Account found please create a new Accoount."
+        );
+        req.flash("message", message);
         res.redirect("/auth/createAccount");
       } else {
-        console.log("Invalid");
-        message = new messageModel("error", "Invalid username or password");
-        req.flash("message", message);
-        res.redirect("/MyPortfolio");
+        req.session.user = userR;
+        res.redirect("/edit/updateProfile");
       }
     })
     .catch((error) => {
@@ -34,27 +38,35 @@ exports.register = (req, res, next) => {
   let message;
   if (password === confirm_password) {
     const userM = new user();
+    const profileM = new profile();
     userM.email = email;
     userM.password = password;
-    userM.save().then((result) => {
-      message = new messageModel(
-        "success",
-        "Account created please login with your credentials."
-      );
-      req.flash("message", message);
-      res.redirect("/auth/loginPage");
-    }).catch(error=>{
-      message = new messageModel(
-        "error",
-        "Database error"
-      );
-      req.flash("message", message);
-      res.redirect("/auth/createAccount");
-    });
+    userM.profile = profileM;
+    profileM.user=userM;
+    userM
+      .save()
+      .then((userR) => {
+        profileM.user = userR;
+        return profileM.save();
+      })
+      .then((profileR) => {
+        message = new messageModel(
+          "success",
+          "Account created please login with your credentials."
+        );
+        req.flash("message", message);
+        res.redirect("/auth/loginPage");
+      })
+      .catch((error) => {
+        console.log(error);
+        message = new messageModel("error", "Database error");
+        req.flash("message", message);
+        res.redirect("/auth/createAccount");
+      });
   } else {
     message = new messageModel(
       "error",
-      "Something went wrong please try again."
+      "Password and confirm password does not match."
     );
     req.flash("message", message);
     res.redirect("/auth/createAccount");
@@ -62,17 +74,17 @@ exports.register = (req, res, next) => {
 };
 
 exports.loginPage = (req, res, next) => {
-  const message=req.flash('message')[0];
+  const message = req.flash("message")[0];
   res.render("./pages/account", {
     showLogin: true,
-    message:message?message:{}
+    message: message ? message : {},
   });
 };
 
 exports.registerPage = (req, res, next) => {
-  const message=req.flash('message')[0];
+  const message = req.flash("message")[0];
   res.render("./pages/account", {
     showLogin: false,
-    message:message?message:{}
+    message: message ? message : {},
   });
 };

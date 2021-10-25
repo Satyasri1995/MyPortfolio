@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const user = new Schema({
   name: {
     type: String,
-    required: true,
+    required: false,
   },
   stack: [
     {
@@ -31,6 +31,11 @@ const user = new Schema({
   password:{
       type:mongoose.SchemaTypes.String,
       required:true
+  },
+  profile:{
+    type:mongoose.SchemaTypes.ObjectId,
+    required:true,
+    ref:'profile'
   }
 });
 
