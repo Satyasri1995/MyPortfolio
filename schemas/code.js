@@ -1,19 +1,19 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const code = new Schema({
+const codeSchema = new Schema({
   icon: {
     type: String,
-    required: true,
+    required: false,
   },
   title: {
     type: String,
-    required: true,
+    required: false,
   },
   star: {
     type: Number,
-    required: true,
+    required: false,
   },
 });
 
-module.exports = mongoose.model("code", code);
+module.exports = codeSchema;

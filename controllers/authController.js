@@ -1,6 +1,15 @@
-const user = require("./../models/user");
+const mongoose = require('mongoose');
 const messageModel = require("./../utils/models/message");
-const profile = require("./../models/profile");
+const BasicDetails=require('./../utils/models/basicDetails');
+
+const userSchema = require("./../schemas/user");
+const profileSchema = require("./../schemas/profile");
+const aboutSchema=require('./../schemas/about');
+
+const user = mongoose.model('user',userSchema);
+const profile = mongoose.model('profile',profileSchema);
+const about = mongoose.model('about',aboutSchema);
+
 
 exports.login = (req, res, next) => {
   const { email, password } = { ...req.body };
@@ -13,7 +22,7 @@ exports.login = (req, res, next) => {
     .then((userR) => {
       if (!userR) {
         message = new messageModel(
-          "error",
+          "info",
           "No Account found please create a new Accoount."
         );
         req.flash("message", message);
@@ -27,7 +36,7 @@ exports.login = (req, res, next) => {
       console.log(error);
       message = new messageModel("error", "Invalid username or password");
       req.flash("message", message);
-      res.redirect("/auth/login");
+      res.redirect("/auth/signin");
     });
 };
 
@@ -39,10 +48,25 @@ exports.register = (req, res, next) => {
   if (password === confirm_password) {
     const userM = new user();
     const profileM = new profile();
-    userM.email = email;
+    const aboutM = new about();
+    const basicDetails = new BasicDetails(
+      null,
+      null,
+      email,
+      null,
+      null,
+      null
+    );
+    userM.email = basicDetails.email;
     userM.password = password;
     userM.profile = profileM;
+    userM.name=basicDetails.name;
+    userM.stack=basicDetails.stack;
+    userM.phone=basicDetails.stack;
+    userM.phone_alt=basicDetails.phone_alt;
+    userM.location=basicDetails.location;
     profileM.user=userM;
+    profileM.about=aboutM;
     userM
       .save()
       .then((userR) => {

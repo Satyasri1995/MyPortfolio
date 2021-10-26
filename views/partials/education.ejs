@@ -10,30 +10,32 @@
         </a>
     </div>
     <div class="miniForm" id="Education_FormContainer">
-        <form class="education_details_form form">
-            <div class="field">
-                <label for="start"><span class="gradientText">Start</span>&nbsp;Date</label>
-                <input type="date" name="start" id="start">
-            </div>
-            <div class="field">
-                <label for="end"><span class="gradientText">End</span>&nbsp;Date</label>
-                <input type="date" name="end" id="end">
-            </div>
-            <div class="field">
-                <label for="school"><span class="gradientText">S</span>chool</label>
-                <input type="text" name="school" id="school">
-            </div>
-            <div class="field">
-                <label for="location"><span class="gradientText">L</span>ocation</label>
-                <input type="text" name="location" id="location">
-            </div>
-            <div class="field">
-                <label for="description_education"><span class="gradientText">D</span>escription</label>
-                <textarea name="description" id="description_education" cols="30" rows="5"></textarea>
-            </div>
-            <div class="button-field">
-                <button type="submit"><i class="fas fa-save"></i>&nbsp;Save</button>
-            </div>
-        </form>
+        <% educations.forEach(education => { %>
+            <form class="education_details_form form" action="/edit/education?id=<%= education._id %>">
+                <div class="field">
+                    <label for="start"><span class="gradientText">Start</span>&nbsp;Date</label>
+                    <input type="date" value="<%= education.start %>" name="start" id="start">
+                </div>
+                <div class="field">
+                    <label for="end"><span class="gradientText">End</span>&nbsp;Date</label>
+                    <input type="date" value="<%= education.end %>" name="end" id="end">
+                </div>
+                <div class="field">
+                    <label for="school"><span class="gradientText">S</span>chool</label>
+                    <input type="text" value="<%= education.school %>" name="school" id="school">
+                </div>
+                <div class="field">
+                    <label for="location"><span class="gradientText">L</span>ocation</label>
+                    <input type="text" value="<%= education.location %>" name="location" id="location">
+                </div>
+                <div class="field">
+                    <label for="description_education"><span class="gradientText">D</span>escription</label>
+                    <textarea name="description" value="<%= education.description %>" id="description_education" cols="30" rows="5"></textarea>
+                </div>
+                <div class="button-field">
+                    <button type="submit"><i class="fas fa-save"></i>&nbsp;Save</button>
+                </div>
+            </form>
+        <% }) %>
     </div>
 </section>

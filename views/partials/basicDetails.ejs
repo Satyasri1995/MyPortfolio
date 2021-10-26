@@ -2,30 +2,30 @@
     <div class="title">
         <span><span class="gradientText">Basic</span>&nbsp;Details</span>
     </div>
-    <form class="basic_details_form form">
+    <form class="basic_details_form form" action="/edit/basicDetails?id=<%= id %>" method="POST">
         <div class="field">
             <label for="name"><span class="gradientText">Full</span>&nbsp;Name</label>
-            <input type="text" name="name" id="name">
+            <input type="text" name="name" value="<%= name %>" id="name">
         </div>
         <div class="field">
             <label for="stack"><span class="gradientText">Stack</span>&nbsp;Technologies</label>
-            <input type="text" name="stack" id="stack">
+            <input type="text"  value="<%= stack %>" name="stack" id="stack">
         </div>
         <div class="field">
             <label for="email"><span class="gradientText">E</span>-Mail</label>
-            <input type="email" name="email" id="email">
+            <input type="email" value="<%= email %>" name="email" id="email">
         </div>
         <div class="field">
             <label for="phone"><span class="gradientText">Phone</span>&nbsp;Number</label>
-            <input type="number" name="phone" id="phone">
+            <input type="number" value="<%= phone %>" name="phone" id="phone">
         </div>
         <div class="field">
             <label for="phone_alt"><span class="gradientText">Alternate</span>&nbsp;Phone Number</label>
-            <input type="number" name="phone_alt" id="phone_alt">
+            <input type="number" value="<%= phone_alt %>" name="phone_alt" id="phone_alt">
         </div>
         <div class="field">
             <label for="location"><span class="gradientText">L</span>ocation</label>
-            <input type="text" name="location" id="location">
+            <input type="text" value="<%= location %>" name="location" id="location">
         </div>
         <div class="button-field">
             <button type="submit"><i class="fas fa-save"></i>&nbsp;Save</button>

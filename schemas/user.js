@@ -1,17 +1,15 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const user = new Schema({
+const userSchema = new Schema({
   name: {
     type: String,
     required: false,
   },
-  stack: [
-    {
-      type: String,
-      required: false,
-    },
-  ],
+  stack: {
+    type: String,
+    required: false,
+  },
   email: {
     type: String,
     required: true,
@@ -20,7 +18,7 @@ const user = new Schema({
     type: Number,
     required: false,
   },
-  phonne_alt: {
+  phone_alt: {
     type: Number,
     required: false,
   },
@@ -39,4 +37,4 @@ const user = new Schema({
   }
 });
 
-module.exports = mongoose.model("user", user);
+module.exports = userSchema;

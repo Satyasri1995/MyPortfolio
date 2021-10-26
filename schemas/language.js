@@ -1,23 +1,23 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const language = new Schema({
+const languageSchema = new Schema({
   language: {
     type: String,
-    required: true,
+    required: false,
   },
   speak:{
       type:Number,
-      required:true
+      required:false
   },
   read:{
       type:Number,
-      required:true
+      required:false
   },
   write:{
       type:Number,
-      required:true
+      required:false
   },
 });
 
-module.exports = mongoose.model("language", language);
+module.exports = languageSchema;
