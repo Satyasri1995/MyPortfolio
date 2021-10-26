@@ -10,7 +10,8 @@
     <script>
         window.addEventListener('load',function(){
             checkMessage("<%= message.status?true:false %>");
-        })
+            openTab(event, 'basic_details');
+        });
     </script>
 </head>
 
@@ -26,7 +27,7 @@
         </div>
     </div>
     <%- include('./../partials/message',{status:message.status,message:message.message}) %> 
-    <article class="account">
+    <article class="account_edit">
         <%- include('./../partials/edit') %> 
     </article>
 </body>

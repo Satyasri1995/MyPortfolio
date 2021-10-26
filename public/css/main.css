@@ -29,16 +29,16 @@
     animation: linear 50s squares infinite;
     top: -50%; }
     .bubbles__bubble:nth-child(1) {
-      left: 7%;
+      left: 74%;
       animation-delay: 0s; }
     .bubbles__bubble:nth-child(2) {
-      left: 87%;
+      left: 63%;
       animation-delay: 10s; }
     .bubbles__bubble:nth-child(3) {
-      left: 79%;
+      left: 14%;
       animation-delay: 5s; }
     .bubbles__bubble:nth-child(4) {
-      left: 100%;
+      left: 37%;
       animation-delay: 15s; }
 
 main {
@@ -589,6 +589,18 @@ button[type='submit'] {
   .account button[type="submit"] {
     width: 100%;
     text-align: center; }
+
+.account_edit {
+  width: 50%;
+  height: 90%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); }
+  .account_edit .edit_container {
+    height: 100%; }
+    .account_edit .edit_container .tabcontent {
+      max-height: 85%; }
 
 #message {
   width: 0%;
