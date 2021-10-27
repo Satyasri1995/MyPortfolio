@@ -1,8 +1,8 @@
 class Code {
-  constructor(icon, title, number) {
+  constructor(icon, title, star) {
     this.icon = icon;
     this.title = title;
-    this.number = number;
+    this.star = star;
   }
 }
 

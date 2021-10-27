@@ -114,12 +114,12 @@ function removeMyService(id) {
       document.getElementById("removeMyService").classList.add("disabled");
     }
   }
-  const form = document.createElement('form');
-    form.action="/delete/service?id="+id;
-    form.method="POST";
-    form.style.visibility='hidden';
-    document.body.appendChild(form);
-    form.submit();
+  const form = document.createElement("form");
+  form.action = "/delete/service?id=" + id;
+  form.method = "POST";
+  form.style.visibility = "hidden";
+  document.body.appendChild(form);
+  form.submit();
 }
 
 function addFunFact() {
@@ -151,6 +151,12 @@ function removeFunFact() {
       document.getElementById("removeFunFact").classList.add("disabled");
     }
   }
+  const form = document.createElement("form");
+  form.action = "/delete/funfact?id=" + id;
+  form.method = "POST";
+  form.style.visibility = "hidden";
+  document.body.appendChild(form);
+  form.submit();
 }
 
 function addEducation() {
@@ -194,6 +200,12 @@ function removeEducation() {
       document.getElementById("removeEducation").classList.add("disabled");
     }
   }
+  const form = document.createElement("form");
+  form.action = "/delete/education?id=" + id;
+  form.method = "POST";
+  form.style.visibility = "hidden";
+  document.body.appendChild(form);
+  form.submit();
 }
 
 function addExperience() {
@@ -237,6 +249,12 @@ function removeExperience() {
       document.getElementById("removeExperience").classList.add("disabled");
     }
   }
+  const form = document.createElement("form");
+  form.action = "/delete/experience?id=" + id;
+  form.method = "POST";
+  form.style.visibility = "hidden";
+  document.body.appendChild(form);
+  form.submit();
 }
 
 function addLanguage() {
@@ -276,6 +294,12 @@ function removeLanguage() {
       document.getElementById("removeLanguage").classList.add("disabled");
     }
   }
+  const form = document.createElement("form");
+  form.action = "/delete/language?id=" + id;
+  form.method = "POST";
+  form.style.visibility = "hidden";
+  document.body.appendChild(form);
+  form.submit();
 }
 
 function addMycode() {
@@ -313,6 +337,12 @@ function removeLanguage() {
         .classList.add("disabled");
     }
   }
+  const form = document.createElement("form");
+  form.action = "/delete/code?id=" + id;
+  form.method = "POST";
+  form.style.visibility = "hidden";
+  document.body.appendChild(form);
+  form.submit();
 }
 
 function checkMessage(flag) {

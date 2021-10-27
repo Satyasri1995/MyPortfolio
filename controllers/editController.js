@@ -12,11 +12,9 @@ const mongoose = require("mongoose");
 
 const profileSchema = require("./../schemas/profile");
 const userSchema = require("./../schemas/user");
-const serviceSchema = require("./../schemas/service");
 
 const profile = mongoose.model("profile", profileSchema);
 const user = mongoose.model("user", userSchema);
-const service = mongoose.model("service", serviceSchema);
 
 exports.editPage = (req, res, next) => {
   profile
@@ -182,11 +180,6 @@ exports.editAbout = (req, res, next) => {
     });
 };
 
-exports.editEducation = (req, res, next) => {
-  const message = req.flash("message")[0];
-  res.redirect("/edit/editPage");
-};
-
 exports.editService = (req, res, next) => {
   const serviceId = req.query.id;
   const serviceDetails = new Service(
@@ -266,3 +259,431 @@ exports.editService = (req, res, next) => {
       });
   }
 };
+
+exports.editFunFact = (req, res, next) => {
+  const funfactId = req.query.id;
+  const funfactDetails = new FunFact(req.body.icon, req.body.title);
+  if (funfactId == "") {
+    profile
+      .findById(req.session.user.profile)
+      .then((profileR) => {
+        profileR.funfacts.push(funfactDetails);
+        return profileR.save();
+      })
+      .then((profileR) => {
+        if (profileR) {
+          const message = new Message(
+            "success",
+            "Fun Facts Details saved successfully."
+          );
+          req.flash("message", message);
+          res.redirect("/edit/updateProfile");
+        } else {
+          const message = new Message(
+            "error",
+            "Fun Facts Details failed to save please try again."
+          );
+          req.flash("message", message);
+          res.redirect("/edit/updateProfile");
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        const message = new Message(
+          "error",
+          "Fun Facts Details failed to save please try again."
+        );
+        req.flash("message", message);
+        res.redirect("/edit/updateProfile");
+      });
+  } else {
+    profile
+      .findById(req.session.user.profile)
+      .then((profileR) => {
+        profileR.funfacts.id(funfactId).icon = funfactDetails.icon;
+        profileR.funfacts.id(funfactId).title = funfactDetails.title;
+        return profileR.save();
+      })
+      .then((profileR) => {
+        if (profileR) {
+          const message = new Message(
+            "success",
+            "Fun Facts Details saved successfully."
+          );
+          req.flash("message", message);
+          res.redirect("/edit/updateProfile");
+        } else {
+          const message = new Message(
+            "error",
+            "Fun Facts Details failed to save please try again."
+          );
+          req.flash("message", message);
+          res.redirect("/edit/updateProfile");
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        const message = new Message(
+          "error",
+          "Fun Facts Details failed to save please try again."
+        );
+        req.flash("message", message);
+        res.redirect("/edit/updateProfile");
+      });
+  }
+};
+
+exports.editEducation = (req, res, next) => {
+  const educationId = req.query.id;
+  const educationDetails = new Education(
+    req.body.start,
+    req.body.end,
+    req.body.school,
+    req.body.location,
+    req.body.description
+  )
+  if (educationId == "") {
+    profile
+      .findById(req.session.user.profile)
+      .then((profileR) => {
+        profileR.educations.push(educationDetails);
+        return profileR.save();
+      })
+      .then((profileR) => {
+        if (profileR) {
+          const message = new Message(
+            "success",
+            "Education Details saved successfully."
+          );
+          req.flash("message", message);
+          res.redirect("/edit/updateProfile");
+        } else {
+          const message = new Message(
+            "error",
+            "Education Details failed to save please try again."
+          );
+          req.flash("message", message);
+          res.redirect("/edit/updateProfile");
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        const message = new Message(
+          "error",
+          "Education Details failed to save please try again."
+        );
+        req.flash("message", message);
+        res.redirect("/edit/updateProfile");
+      });
+  } else {
+    profile
+      .findById(req.session.user.profile)
+      .then((profileR) => {
+        profileR.educations.id(educationId).start = educationDetails.start;
+        profileR.educations.id(educationId).end = educationDetails.end;
+        profileR.educations.id(educationId).school = educationDetails.school;
+        profileR.educations.id(educationId).location = educationDetails.location;
+        profileR.educations.id(educationId).description = educationDetails.description;
+        return profileR.save();
+      })
+      .then((profileR) => {
+        if (profileR) {
+          const message = new Message(
+            "success",
+            "Education Details saved successfully."
+          );
+          req.flash("message", message);
+          res.redirect("/edit/updateProfile");
+        } else {
+          const message = new Message(
+            "error",
+            "Education Details failed to save please try again."
+          );
+          req.flash("message", message);
+          res.redirect("/edit/updateProfile");
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        const message = new Message(
+          "error",
+          "Education Details failed to save please try again."
+        );
+        req.flash("message", message);
+        res.redirect("/edit/updateProfile");
+      });
+  }
+};
+
+exports.editExperience = (req, res, next) => {
+  const experienceId = req.query.id;
+  const experienceDetails = new Experience(
+    req.body.start,
+    req.body.end,
+    req.body.organisation,
+    req.body.job,
+    req.body.description
+  )
+  if (experienceId == "") {
+    profile
+      .findById(req.session.user.profile)
+      .then((profileR) => {
+        profileR.experiences.push(experienceDetails);
+        return profileR.save();
+      })
+      .then((profileR) => {
+        if (profileR) {
+          const message = new Message(
+            "success",
+            "Experience Details saved successfully."
+          );
+          req.flash("message", message);
+          res.redirect("/edit/updateProfile");
+        } else {
+          const message = new Message(
+            "error",
+            "Experience Details failed to save please try again."
+          );
+          req.flash("message", message);
+          res.redirect("/edit/updateProfile");
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        const message = new Message(
+          "error",
+          "Experience Details failed to save please try again."
+        );
+        req.flash("message", message);
+        res.redirect("/edit/updateProfile");
+      });
+  } else {
+    profile
+      .findById(req.session.user.profile)
+      .then((profileR) => {
+        profileR.experiences.id(experienceId).start = experienceDetails.start;
+        profileR.experiences.id(experienceId).end = experienceDetails.end;
+        profileR.experiences.id(experienceId).organisation = experienceDetails.organisation;
+        profileR.experiences.id(experienceId).job = experienceDetails.job;
+        profileR.experiences.id(experienceId).description = experienceDetails.description;
+        return profileR.save();
+      })
+      .then((profileR) => {
+        if (profileR) {
+          const message = new Message(
+            "success",
+            "Experience Details saved successfully."
+          );
+          req.flash("message", message);
+          res.redirect("/edit/updateProfile");
+        } else {
+          const message = new Message(
+            "error",
+            "Experience Details failed to save please try again."
+          );
+          req.flash("message", message);
+          res.redirect("/edit/updateProfile");
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        const message = new Message(
+          "error",
+          "Experience Details failed to save please try again."
+        );
+        req.flash("message", message);
+        res.redirect("/edit/updateProfile");
+      });
+  }
+};
+
+exports.editLanguage = (req, res, next) => {
+  const languageId = req.query.id;
+  const languageDetails = new Language(
+    req.body.language,
+    req.body.speak,
+    req.body.read,
+    req.body.write,
+  )
+  if (languageId == "") {
+    profile
+      .findById(req.session.user.profile)
+      .then((profileR) => {
+        profileR.languages.push(languageDetails);
+        return profileR.save();
+      })
+      .then((profileR) => {
+        if (profileR) {
+          const message = new Message(
+            "success",
+            "Language Details saved successfully."
+          );
+          req.flash("message", message);
+          res.redirect("/edit/updateProfile");
+        } else {
+          const message = new Message(
+            "error",
+            "Language Details failed to save please try again."
+          );
+          req.flash("message", message);
+          res.redirect("/edit/updateProfile");
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        const message = new Message(
+          "error",
+          "Language Details failed to save please try again."
+        );
+        req.flash("message", message);
+        res.redirect("/edit/updateProfile");
+      });
+  } else {
+    profile
+      .findById(req.session.user.profile)
+      .then((profileR) => {
+        profileR.languages.id(languageId).language = languageDetails.language;
+        profileR.languages.id(languageId).speak = languageDetails.speak;
+        profileR.languages.id(languageId).read = languageDetails.read;
+        profileR.languages.id(languageId).write = languageDetails.write;
+        return profileR.save();
+      })
+      .then((profileR) => {
+        if (profileR) {
+          const message = new Message(
+            "success",
+            "Language Details saved successfully."
+          );
+          req.flash("message", message);
+          res.redirect("/edit/updateProfile");
+        } else {
+          const message = new Message(
+            "error",
+            "Language Details failed to save please try again."
+          );
+          req.flash("message", message);
+          res.redirect("/edit/updateProfile");
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        const message = new Message(
+          "error",
+          "Language Details failed to save please try again."
+        );
+        req.flash("message", message);
+        res.redirect("/edit/updateProfile");
+      });
+  }
+};
+
+exports.editCode = (req, res, next) => {
+  const codeId = req.query.id;
+  const codeDetails = new Code(
+    req.body.icon,
+    req.body.title,
+    req.body.star,
+  )
+  if (codeId == "") {
+    profile
+      .findById(req.session.user.profile)
+      .then((profileR) => {
+        profileR.cdes.push(codeDetails);
+        return profileR.save();
+      })
+      .then((profileR) => {
+        if (profileR) {
+          const message = new Message(
+            "success",
+            "Code Details saved successfully."
+          );
+          req.flash("message", message);
+          res.redirect("/edit/updateProfile");
+        } else {
+          const message = new Message(
+            "error",
+            "Code Details failed to save please try again."
+          );
+          req.flash("message", message);
+          res.redirect("/edit/updateProfile");
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        const message = new Message(
+          "error",
+          "Code Details failed to save please try again."
+        );
+        req.flash("message", message);
+        res.redirect("/edit/updateProfile");
+      });
+  } else {
+    profile
+      .findById(req.session.user.profile)
+      .then((profileR) => {
+        profileR.codes.id(codeId).icon = codeDetails.icon;
+        profileR.codes.id(codeId).title = codeDetails.title;
+        profileR.codes.id(codeId).star = codeDetails.star;
+        return profileR.save();
+      })
+      .then((profileR) => {
+        if (profileR) {
+          const message = new Message(
+            "success",
+            "Code Details saved successfully."
+          );
+          req.flash("message", message);
+          res.redirect("/edit/updateProfile");
+        } else {
+          const message = new Message(
+            "error",
+            "Code Details failed to save please try again."
+          );
+          req.flash("message", message);
+          res.redirect("/edit/updateProfile");
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        const message = new Message(
+          "error",
+          "Code Details failed to save please try again."
+        );
+        req.flash("message", message);
+        res.redirect("/edit/updateProfile");
+      });
+  }
+};
+
+exports.editQuote=(req,res,next)=>{
+  const quote = req.body.quote;
+  profile.findById(req.session.user.profile)
+  .then(profileR=>{
+    profileR.quote=quote;
+    return profileR.save();
+  }).then(profileR=>{
+    if (profileR) {
+      const message = new Message(
+        "success",
+        "Quote Details saved successfully."
+      );
+      req.flash("message", message);
+      res.redirect("/edit/updateProfile");
+    } else {
+      const message = new Message(
+        "error",
+        "Quote Details failed to save please try again."
+      );
+      req.flash("message", message);
+      res.redirect("/edit/updateProfile");
+    }
+  }).catch(error=>{
+    console.log(error);
+    const message = new Message(
+      "error",
+      "Quote Details failed to save please try again."
+    );
+    req.flash("message", message);
+    res.redirect("/edit/updateProfile");
+  })
+}

@@ -29,16 +29,16 @@
     animation: linear 50s squares infinite;
     top: -50%; }
     .bubbles__bubble:nth-child(1) {
-      left: 29%;
+      left: 100%;
       animation-delay: 0s; }
     .bubbles__bubble:nth-child(2) {
-      left: 58%;
+      left: 19%;
       animation-delay: 10s; }
     .bubbles__bubble:nth-child(3) {
-      left: 15%;
+      left: 48%;
       animation-delay: 5s; }
     .bubbles__bubble:nth-child(4) {
-      left: 62%;
+      left: 57%;
       animation-delay: 15s; }
 
 main {
@@ -470,6 +470,7 @@ button[type='submit'] {
   color: #323232;
   background: transparent;
   margin: 1rem 0rem;
+  cursor: pointer;
   border: 1px solid rgba(100, 100, 100, 0.5); }
   button[type='submit']:hover {
     color: #78cc6d;
