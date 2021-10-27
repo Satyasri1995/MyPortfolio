@@ -84,7 +84,7 @@ function openTab(evt, tab) {
 function addMyService() {
   const container = document.getElementById("myService_FormContainer");
   const formLen = container.children.length;
-  const form = `<form class="my_service_details_form form mt-2">
+  const form = `<form class="my_service_details_form form mt-2" action="/edit/service?id=" method="POST">
   <div class="field">
       <label for="icon_service${formLen}"><span class="gradientText">I</span>con</label>
       <input type="text" name="icon" id="_serviceicon${formLen}">
@@ -105,7 +105,7 @@ function addMyService() {
   document.getElementById("removeMyService").classList.remove("disabled");
 }
 
-function removeMyService() {
+function removeMyService(id) {
   const container = document.getElementById("myService_FormContainer");
   const formLen = container.children.length;
   if (formLen > 1) {
@@ -114,11 +114,18 @@ function removeMyService() {
       document.getElementById("removeMyService").classList.add("disabled");
     }
   }
+  const form = document.createElement('form');
+    form.action="/delete/service?id="+id;
+    form.method="POST";
+    form.style.visibility='hidden';
+    document.body.appendChild(form);
+    form.submit();
 }
+
 function addFunFact() {
   const container = document.getElementById("funFacts_FormContainer");
   const formLen = container.children.length;
-  const form = `<form class="fun_facts_details_form form mt-2">
+  const form = `<form class="fun_facts_details_form form mt-2" action="/edit/funfact?id=" method="POST">
   <div class="field">
       <label for="icon_facts${formLen}"><span class="gradientText">I</span>con</label>
       <input type="text" name="icon" id="icon_facts${formLen}">
@@ -149,7 +156,7 @@ function removeFunFact() {
 function addEducation() {
   const container = document.getElementById("Education_FormContainer");
   const formLen = container.children.length;
-  const form = `<form class="education_details_form form mt-2">
+  const form = `<form class="education_details_form form mt-2" action="/edit/education?id=" method="POST">
   <div class="field">
       <label for="start${formLen}"><span class="gradientText">Start</span>&nbsp;Date</label>
       <input type="date" name="start" id="start${formLen}">
@@ -192,7 +199,7 @@ function removeEducation() {
 function addExperience() {
   const container = document.getElementById("Experience_FormContainer");
   const formLen = container.children.length;
-  const form = `<form class="experience_details_form form">
+  const form = `<form class="experience_details_form form" action="/edit/experience?id=" method="POST">
   <div class="field">
       <label for="start${formLen}"><span class="gradientText">Start</span>&nbsp;Date</label>
       <input type="date" name="start" id="start${formLen}">
@@ -235,7 +242,7 @@ function removeExperience() {
 function addLanguage() {
   const container = document.getElementById("language_FormContainer");
   const formLen = container.children.length;
-  const form = `<form class="language_details_form form mt-2">
+  const form = `<form class="language_details_form form mt-2" action="/edit/language?id=" method="POST">
   <div class="field">
       <label for="language${formLen}"><span class="gradientText">L</span>anguage</label>
       <input type="text" name="language" id="language${formLen}">
@@ -274,7 +281,7 @@ function removeLanguage() {
 function addMycode() {
   const container = document.getElementById("mycode_FormContainer");
   const formLen = container.children.length;
-  const form = `<form class="my_code_details_form form">
+  const form = `<form class="my_code_details_form form" action="/edit/code?id=" method="POST">
   <div class="field">
       <label for="icon_code${formLen}"><span class="gradientText">I</span>con</label>
       <input type="text" name="icon" id="icon_code${formLen}">

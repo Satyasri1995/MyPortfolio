@@ -7,6 +7,7 @@ const flash = require('connect-flash');
 
 const authRoutes = require('./routes/auth');
 const editRoutes = require('./routes/edit');
+const deleteRoute = require('./routes/delete');
 
 const app = express();
 app.use(express.static(path.join(__dirname, "public")));
@@ -21,6 +22,7 @@ app.set("views", "views");
 
 app.use('/auth',authRoutes);
 app.use('/edit',editRoutes);
+app.use('/delete',deleteRoute);
 
 app.use("/MyPortfolio", (req, res, next) => {
   res.render("./pages/home", { login: true });

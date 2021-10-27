@@ -10,26 +10,28 @@
         </a>
     </div>
     <div class="miniForm" id="language_FormContainer">
-        <form class="language_details_form form">
-            <div class="field">
-                <label for="language"><span class="gradientText">L</span>anguage</label>
-                <input type="text" name="language" id="language">
-            </div>
-            <div class="field">
-                <label for="speak"><span class="gradientText">S</span>peak</label>
-                <input type="number" min="0" max="100" name="speak" id="speak">
-            </div>
-            <div class="field">
-                <label for="read"><span class="gradientText">R</span>ead</label>
-                <input type="number" min="0" max="100" name="read" id="read">
-            </div>
-            <div class="field">
-                <label for="write"><span class="gradientText">W</span>rite</label>
-                <input type="number" min="0" max="100" name="write" id="write">
-            </div>
-            <div class="button-field">
-                <button type="submit"><i class="fas fa-save"></i>&nbsp;Save</button>
-            </div>
-        </form>
+        <% languages.forEach(language => { %>
+            <form class="language_details_form form" action="/edit/language?id=<%= language._id %>" method="POST">
+                <div class="field">
+                    <label for="language"><span class="gradientText">L</span>anguage</label>
+                    <input type="text" value="<%= language.language %>" name="language" id="language">
+                </div>
+                <div class="field">
+                    <label for="speak"><span class="gradientText">S</span>peak</label>
+                    <input type="number" value="<%= language.speak %>" min="0" max="100" name="speak" id="speak">
+                </div>
+                <div class="field">
+                    <label for="read"><span class="gradientText">R</span>ead</label>
+                    <input type="number" value="<%= language.read %>" min="0" max="100" name="read" id="read">
+                </div>
+                <div class="field">
+                    <label for="write"><span class="gradientText">W</span>rite</label>
+                    <input type="number" value="<%= language.write %>" min="0" max="100" name="write" id="write">
+                </div>
+                <div class="button-field">
+                    <button type="submit"><i class="fas fa-save"></i>&nbsp;Save</button>
+                </div>
+            </form>
+        <% }) %>
     </div>
 </section>

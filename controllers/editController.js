@@ -11,10 +11,12 @@ const Message = require("./../utils/models/message");
 const mongoose = require("mongoose");
 
 const profileSchema = require("./../schemas/profile");
-const userSchema=require('./../schemas/user');
+const userSchema = require("./../schemas/user");
+const serviceSchema = require("./../schemas/service");
 
 const profile = mongoose.model("profile", profileSchema);
-const user=mongoose.model("user",userSchema);
+const user = mongoose.model("user", userSchema);
+const service = mongoose.model("service", serviceSchema);
 
 exports.editPage = (req, res, next) => {
   profile
@@ -38,16 +40,16 @@ exports.editPage = (req, res, next) => {
         complete: 0,
       };
       if (profileR) {
-        Object.keys(profileR.user).forEach((key)=>{
-          if(profile.basicDetails.hasOwnProperty(key)){
-            profile.basicDetails[key]=profileR.user[key];
+        Object.keys(profileR.user).forEach((key) => {
+          if (profile.basicDetails.hasOwnProperty(key)) {
+            profile.basicDetails[key] = profileR.user[key];
           }
-        })
-        Object.keys(profileR.about).forEach((key)=>{
-          if(profile.about.hasOwnProperty(key)){
-            profile.about[key]=profileR.about[key];
+        });
+        Object.keys(profileR.about).forEach((key) => {
+          if (profile.about.hasOwnProperty(key)) {
+            profile.about[key] = profileR.about[key];
           }
-        })
+        });
         if (profileR.services.length) {
           profile.services = profileR.services;
           profile.complete += cp;
@@ -141,7 +143,7 @@ exports.editAbout = (req, res, next) => {
     req.body.residence,
     req.body.address
   );
-  console.log(req.session.user.profile,"edit about");
+
   profile
     .findById(req.session.user.profile)
     .then((profileR) => {
@@ -183,4 +185,84 @@ exports.editAbout = (req, res, next) => {
 exports.editEducation = (req, res, next) => {
   const message = req.flash("message")[0];
   res.redirect("/edit/editPage");
+};
+
+exports.editService = (req, res, next) => {
+  const serviceId = req.query.id;
+  const serviceDetails = new Service(
+    req.body.icon,
+    req.body.title,
+    req.body.description
+  );
+  console.log(serviceId);
+  if (serviceId == "") {
+    profile
+      .findById(req.session.user.profile)
+      .then((profileR) => {
+        profileR.services.push(serviceDetails);
+        return profileR.save();
+      })
+      .then((profileR) => {
+        if (profileR) {
+          const message = new Message(
+            "success",
+            "Service Details saved successfully."
+          );
+          req.flash("message", message);
+          res.redirect("/edit/updateProfile");
+        } else {
+          const message = new Message(
+            "error",
+            "Service Details failed to save please try again."
+          );
+          req.flash("message", message);
+          res.redirect("/edit/updateProfile");
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        const message = new Message(
+          "error",
+          "Service Details failed to save please try again."
+        );
+        req.flash("message", message);
+        res.redirect("/edit/updateProfile");
+      });
+  } else {
+    profile
+      .findById(req.session.user.profile)
+      .then((profileR) => {
+        profileR.services.id(serviceId).icon = serviceDetails.icon;
+        profileR.services.id(serviceId).title = serviceDetails.title;
+        profileR.services.id(serviceId).description =
+          serviceDetails.description;
+        return profileR.save();
+      })
+      .then((profileR) => {
+        if (profileR) {
+          const message = new Message(
+            "success",
+            "Service Details saved successfully."
+          );
+          req.flash("message", message);
+          res.redirect("/edit/updateProfile");
+        } else {
+          const message = new Message(
+            "error",
+            "Service Details failed to save please try again."
+          );
+          req.flash("message", message);
+          res.redirect("/edit/updateProfile");
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        const message = new Message(
+          "error",
+          "Service Details failed to save please try again."
+        );
+        req.flash("message", message);
+        res.redirect("/edit/updateProfile");
+      });
+  }
 };

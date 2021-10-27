@@ -10,18 +10,20 @@
         </a>
     </div>
     <div class="miniForm" id="funFacts_FormContainer">
-        <form class="fun_facts_details_form form">
-            <div class="field">
-                <label for="icon_facts"><span class="gradientText">I</span>con</label>
-                <input type="text" name="icon" id="icon_facts">
-            </div>
-            <div class="field">
-                <label for="title_facts"><span class="gradientText">T</span>itle</label>
-                <input type="text" name="title" id="title_facts">
-            </div>
-            <div class="button-field">
-                <button type="submit"><i class="fas fa-save"></i>&nbsp;Save</button>
-            </div>
-        </form>
+        <% funfacts.forEach(funfact => { %>
+            <form class="fun_facts_details_form form" action="/edit/funfact?id=<%= funfact._id %>" method="POST">
+                <div class="field">
+                    <label for="icon_facts"><span class="gradientText">I</span>con</label>
+                    <input type="text" value="<%= funfact.icon %>" name="icon" id="icon_facts">
+                </div>
+                <div class="field">
+                    <label for="title_facts"><span class="gradientText">T</span>itle</label>
+                    <input type="text" value="<%= funfact.title %>" name="title" id="title_facts">
+                </div>
+                <div class="button-field">
+                    <button type="submit"><i class="fas fa-save"></i>&nbsp;Save</button>
+                </div>
+            </form>
+        <% }) %>
     </div>
 </section>

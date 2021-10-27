@@ -8,5 +8,6 @@ router.use("/updateProfile", authGuard, editController.editPage);
 router.post("/basicDetails", authGuard, editController.editBasicDetails);
 router.post("/about", authGuard, editController.editAbout);
 router.post("/education", authGuard, editController.editEducation);
+router.post("/service", authGuard, editController.editService);
 
 module.exports = router;

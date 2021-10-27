@@ -10,22 +10,24 @@
         </a>
     </div>
     <div class="miniForm" id="mycode_FormContainer">
-        <form class="my_code_details_form form">
-            <div class="field">
-                <label for="icon_code"><span class="gradientText">I</span>con</label>
-                <input type="text" name="icon" id="icon_code">
-            </div>
-            <div class="field">
-                <label for="title_code"><span class="gradientText">T</span>itle</label>
-                <input type="text" name="title" id="title_code">
-            </div>
-            <div class="field">
-                <label for="star"><span class="gradientText">D</span>escription</label>
-                <input type="number" name="star" id="star">
-            </div>
-            <div class="button-field">
-                <button type="submit"><i class="fas fa-save"></i>&nbsp;Save</button>
-            </div>
-        </form>
+        <% codes.forEach(code => { %>
+            <form class="my_code_details_form form" action="/edit/code?id=<%= code._id %>" method="POST">
+                <div class="field">
+                    <label for="icon_code"><span class="gradientText">I</span>con</label>
+                    <input type="text" value="<%= code.icon %>" name="icon" id="icon_code">
+                </div>
+                <div class="field">
+                    <label for="title_code"><span class="gradientText">T</span>itle</label>
+                    <input type="text" value="<%= code.title %>" name="title" id="title_code">
+                </div>
+                <div class="field">
+                    <label for="star"><span class="gradientText">D</span>escription</label>
+                    <input type="number" value="<%= code.star %>" name="star" id="star">
+                </div>
+                <div class="button-field">
+                    <button type="submit"><i class="fas fa-save"></i>&nbsp;Save</button>
+                </div>
+            </form>
+        <% }) %>
     </div>
 </section>

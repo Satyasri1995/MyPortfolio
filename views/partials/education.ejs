@@ -11,7 +11,7 @@
     </div>
     <div class="miniForm" id="Education_FormContainer">
         <% educations.forEach(education => { %>
-            <form class="education_details_form form" action="/edit/education?id=<%= education._id %>">
+            <form class="education_details_form form" action="/edit/education?id=<%= education._id %>" method="POST">
                 <div class="field">
                     <label for="start"><span class="gradientText">Start</span>&nbsp;Date</label>
                     <input type="date" value="<%= education.start %>" name="start" id="start">

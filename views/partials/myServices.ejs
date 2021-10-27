@@ -5,27 +5,30 @@
         <a class="add noselect" id="addMyService" onclick="addMyService()">
             <i class="fas fa-plus-circle"></i>&nbsp;Add Service
         </a>
-        <a class="remove noselect"  id="removeMyService" onclick="removeMyService()">
+        <a class="remove noselect"  id="removeMyService" onclick="removeMyService('<%= services[services.length-1]._id %>')">
             <i class="fas fa-minus-circle"></i>&nbsp;Remove Service
         </a>
     </div>
     <div class="miniForm" id="myService_FormContainer">
-        <form class="my_service_details_form form">
-            <div class="field">
-                <label for="icon_service"><span class="gradientText">I</span>con</label>
-                <input type="text" name="icon" id="icon_service">
-            </div>
-            <div class="field">
-                <label for="title_service"><span class="gradientText">T</span>itle</label>
-                <input type="text" name="title" id="title_service">
-            </div>
-            <div class="field">
-                <label for="description_service"><span class="gradientText">D</span>escription</label>
-                <input type="text" name="description" id="description_service">
-            </div>
-            <div class="button-field">
-                <button type="submit"><i class="fas fa-save"></i>&nbsp;Save</button>
-            </div>
-        </form>
+        <% services.forEach((service,index) => { %>
+            <form class="my_service_details_form form <%= index>0?'mt-2':'' %> " action="/edit/service?id=<%= service._id %>" method="POST">
+                <div class="field">
+                    <label for="icon_service"><span class="gradientText">I</span>con</label>
+                    <input type="text" value="<%= service.icon %>" name="icon" id="icon_service">
+                </div>
+                <div class="field">
+                    <label for="title_service"><span class="gradientText">T</span>itle</label>
+                    <input type="text" value="<%= service.title %>" name="title" id="title_service">
+                </div>
+                <div class="field">
+                    <label for="description_service"><span class="gradientText">D</span>escription</label>
+                    <input type="text" value="<%= service.description %>" name="description" id="description_service">
+                </div>
+                <div class="button-field">
+                    <button type="submit"><i class="fas fa-save"></i>&nbsp;Save</button>
+                </div>
+            </form>
+            
+        <% }) %>
     </div>
 </section>
