@@ -5,7 +5,7 @@
         <a class="add noselect" id="addEducation" onclick="addEducation()">
             <i class="fas fa-plus-circle"></i>&nbsp;Add Education
         </a>
-        <a class="remove noselect"  id="removeEducation" onclick="removeEducation()">
+        <a class="remove noselect <%= educations.length<=1?'disabled':'' %>"  id="removeEducation" onclick="removeEducation('<%= educations[educations.length-1]._id %>',Number('<%= educations.length %>'))">
             <i class="fas fa-minus-circle"></i>&nbsp;Remove Education
         </a>
     </div>

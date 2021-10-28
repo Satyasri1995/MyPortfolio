@@ -5,7 +5,7 @@
         <a class="add noselect" id="addExperience" onclick="addExperience()">
             <i class="fas fa-plus-circle"></i>&nbsp;Add Experience
         </a>
-        <a class="remove noselect"  id="removeExperience" onclick="removeExperience()">
+        <a class="remove noselect <%= experiences.length<=1?'disabled':'' %> "  id="removeExperience" onclick="removeExperience('<%= experiences[experiences.length-1]._id %>',Number('<%= experiences.length %>'))">
             <i class="fas fa-minus-circle"></i>&nbsp;Remove Experience
         </a>
     </div>

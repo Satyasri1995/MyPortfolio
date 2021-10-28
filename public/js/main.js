@@ -105,21 +105,24 @@ function addMyService() {
   document.getElementById("removeMyService").classList.remove("disabled");
 }
 
-function removeMyService(id) {
+function removeMyService(id,size) {
   const container = document.getElementById("myService_FormContainer");
   const formLen = container.children.length;
   if (formLen > 1) {
-    container.removeChild(container.lastElementChild);
-    if (container.children.length == 1) {
-      document.getElementById("removeMyService").classList.add("disabled");
+    if (formLen <= size) {
+      const form = document.createElement("form");
+      form.action = "/delete/service?id=" + id;
+      form.method = "POST";
+      form.style.visibility = "hidden";
+      document.body.appendChild(form);
+      form.submit();
+    }else{
+      container.removeChild(container.lastElementChild);
+      if(container.children.length==1){
+        document.getElementById('removeMyService').classList.add('disabled');
+      }
     }
   }
-  const form = document.createElement("form");
-  form.action = "/delete/service?id=" + id;
-  form.method = "POST";
-  form.style.visibility = "hidden";
-  document.body.appendChild(form);
-  form.submit();
 }
 
 function addFunFact() {
@@ -142,21 +145,24 @@ function addFunFact() {
   document.getElementById("removeFunFact").classList.remove("disabled");
 }
 
-function removeFunFact() {
+function removeFunFact(id, size) {
   const container = document.getElementById("funFacts_FormContainer");
   const formLen = container.children.length;
   if (formLen > 1) {
-    container.removeChild(container.lastElementChild);
-    if (container.children.length == 1) {
-      document.getElementById("removeFunFact").classList.add("disabled");
+    if (formLen <= size) {
+      const form = document.createElement("form");
+      form.action = "/delete/funfact?id=" + id;
+      form.method = "POST";
+      form.style.visibility = "hidden";
+      document.body.appendChild(form);
+      form.submit();
+    } else {
+      container.removeChild(container.lastElementChild);
+      if(container.children.length==1){
+        document.getElementById('removeFunFact').classList.add('disabled');
+      }
     }
   }
-  const form = document.createElement("form");
-  form.action = "/delete/funfact?id=" + id;
-  form.method = "POST";
-  form.style.visibility = "hidden";
-  document.body.appendChild(form);
-  form.submit();
 }
 
 function addEducation() {
@@ -191,21 +197,24 @@ function addEducation() {
   document.getElementById("removeEducation").classList.remove("disabled");
 }
 
-function removeEducation() {
+function removeEducation(id, size) {
   const container = document.getElementById("Education_FormContainer");
   const formLen = container.children.length;
   if (formLen > 1) {
-    container.removeChild(container.lastElementChild);
-    if (container.children.length == 1) {
-      document.getElementById("removeEducation").classList.add("disabled");
+    if (formLen <= size) {
+      const form = document.createElement("form");
+      form.action = "/delete/education?id=" + id;
+      form.method = "POST";
+      form.style.visibility = "hidden";
+      document.body.appendChild(form);
+      form.submit();
+    } else {
+      container.removeChild(container.lastElementChild);
+      if(container.children.length==1){
+        document.getElementById('removeEducation').classList.add('disabled');
+      }
     }
   }
-  const form = document.createElement("form");
-  form.action = "/delete/education?id=" + id;
-  form.method = "POST";
-  form.style.visibility = "hidden";
-  document.body.appendChild(form);
-  form.submit();
 }
 
 function addExperience() {
@@ -240,21 +249,24 @@ function addExperience() {
   document.getElementById("removeExperience").classList.remove("disabled");
 }
 
-function removeExperience() {
+function removeExperience(id, size) {
   const container = document.getElementById("Experience_FormContainer");
   const formLen = container.children.length;
   if (formLen > 1) {
-    container.removeChild(container.lastElementChild);
-    if (container.children.length == 1) {
-      document.getElementById("removeExperience").classList.add("disabled");
+    if (formLen <= size) {
+      const form = document.createElement("form");
+      form.action = "/delete/experience?id=" + id;
+      form.method = "POST";
+      form.style.visibility = "hidden";
+      document.body.appendChild(form);
+      form.submit();
+    } else {
+      container.removeChild(container.lastElementChild);
+      if(container.children.length==1){
+        document.getElementById('removeExperience').classList.add('disabled');
+      }
     }
   }
-  const form = document.createElement("form");
-  form.action = "/delete/experience?id=" + id;
-  form.method = "POST";
-  form.style.visibility = "hidden";
-  document.body.appendChild(form);
-  form.submit();
 }
 
 function addLanguage() {
@@ -285,21 +297,24 @@ function addLanguage() {
   document.getElementById("removeLanguage").classList.remove("disabled");
 }
 
-function removeLanguage() {
+function removeLanguage(id, size) {
   const container = document.getElementById("language_FormContainer");
   const formLen = container.children.length;
   if (formLen > 1) {
-    container.removeChild(container.lastElementChild);
-    if (container.children.length == 1) {
-      document.getElementById("removeLanguage").classList.add("disabled");
+    if (formLen <= size) {
+      const form = document.createElement("form");
+      form.action = "/delete/language?id=" + id;
+      form.method = "POST";
+      form.style.visibility = "hidden";
+      document.body.appendChild(form);
+      form.submit();
+    } else {
+      container.removeChild(container.lastElementChild);
+      if(container.children.length==1){
+        document.getElementById('removeLanguage').classList.add('disabled');
+      }
     }
   }
-  const form = document.createElement("form");
-  form.action = "/delete/language?id=" + id;
-  form.method = "POST";
-  form.style.visibility = "hidden";
-  document.body.appendChild(form);
-  form.submit();
 }
 
 function addMycode() {
@@ -326,23 +341,24 @@ function addMycode() {
   document.getElementById("removeMycode").classList.remove("disabled");
 }
 
-function removeLanguage() {
+function removeMycode(id, size) {
   const container = document.getElementById("mycode_FormContainer");
   const formLen = container.children.length;
   if (formLen > 1) {
-    container.removeChild(container.lastElementChild);
-    if (container.children.length == 1) {
-      document
-        .getElementById("removeMycode${formLen}")
-        .classList.add("disabled");
+    if (formLen <= size) {
+      const form = document.createElement("form");
+      form.action = "/delete/code?id=" + id;
+      form.method = "POST";
+      form.style.visibility = "hidden";
+      document.body.appendChild(form);
+      form.submit();
+    } else {
+      container.removeChild(container.lastElementChild);
+      if(container.children.length==1){
+        document.getElementById('removeMycode').classList.add('disabled');
+      }
     }
   }
-  const form = document.createElement("form");
-  form.action = "/delete/code?id=" + id;
-  form.method = "POST";
-  form.style.visibility = "hidden";
-  document.body.appendChild(form);
-  form.submit();
 }
 
 function checkMessage(flag) {

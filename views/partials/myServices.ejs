@@ -5,7 +5,7 @@
         <a class="add noselect" id="addMyService" onclick="addMyService()">
             <i class="fas fa-plus-circle"></i>&nbsp;Add Service
         </a>
-        <a class="remove noselect"  id="removeMyService" onclick="removeMyService('<%= services[services.length-1]._id %>')">
+        <a class="remove noselect <%= services.length==1?'disabled':'' %>"  id="removeMyService" onclick="removeMyService('<%= services[services.length-1]._id %>',Number('<%= services.length %>'))">
             <i class="fas fa-minus-circle"></i>&nbsp;Remove Service
         </a>
     </div>

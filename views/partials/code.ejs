@@ -5,7 +5,7 @@
         <a class="add noselect" id="addMycode" onclick="addMycode()">
             <i class="fas fa-plus-circle"></i>&nbsp;Add Vode
         </a>
-        <a class="remove noselect"  id="removeMycode" onclick="removeMycode()">
+        <a class="remove noselect <%= codes.length<=1?'disabled':'' %>"  id="removeMycode" onclick="removeMycode('<%= codes[codes.length-1]._id %>')">
             <i class="fas fa-minus-circle"></i>&nbsp;Remove Code
         </a>
     </div>

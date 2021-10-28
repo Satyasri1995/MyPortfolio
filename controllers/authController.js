@@ -4,11 +4,9 @@ const BasicDetails=require('./../utils/models/basicDetails');
 
 const userSchema = require("./../schemas/user");
 const profileSchema = require("./../schemas/profile");
-const aboutSchema=require('./../schemas/about');
 
 const user = mongoose.model('user',userSchema);
 const profile = mongoose.model('profile',profileSchema);
-const about = mongoose.model('about',aboutSchema);
 
 
 exports.login = (req, res, next) => {
@@ -48,7 +46,6 @@ exports.register = (req, res, next) => {
   if (password === confirm_password) {
     const userM = new user();
     const profileM = new profile();
-    const aboutM = new about();
     const basicDetails = new BasicDetails(
       null,
       null,
@@ -65,8 +62,6 @@ exports.register = (req, res, next) => {
     userM.phone=basicDetails.stack;
     userM.phone_alt=basicDetails.phone_alt;
     userM.location=basicDetails.location;
-    profileM.user=userM;
-    profileM.about=aboutM;
     userM
       .save()
       .then((userR) => {

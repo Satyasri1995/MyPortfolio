@@ -5,7 +5,7 @@
         <a class="add noselect" id="addLanguage" onclick="addLanguage()">
             <i class="fas fa-plus-circle"></i>&nbsp;Add Language
         </a>
-        <a class="remove noselect"  id="removeLanguage" onclick="removeLanguage()">
+        <a class="remove noselect <%= languages.length<=1?'disabled':'' %>"  id="removeLanguage" onclick="removeLanguage('<%= languages[languages.length-1]._id %>',Number('<%= languages.length %>'))">
             <i class="fas fa-minus-circle"></i>&nbsp;Remove Language
         </a>
     </div>

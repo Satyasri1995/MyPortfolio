@@ -20,11 +20,21 @@ const profileSchema = new Schema({
   experiences:[experienceSchema],
   funfacts:[funfactSchema],
   languages:[languageSchema],
+  services:[serviceSchema],
   quote:{
     type:String,
     required:false
   },
-  services:[serviceSchema]
+  inprogress:{
+    items:[{
+      type:String,
+      required:false
+    }],
+    score:{
+      type:Number,
+      required:false
+    }
+  }
 });
 
 module.exports = profileSchema;
