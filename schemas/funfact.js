@@ -6,7 +6,7 @@ const funfactSchema = new Schema({
     type: String,
     required: false,
   },
-  fact: {
+  title: {
     type: String,
     required: false,
   },

@@ -10,15 +10,15 @@
         </a>
     </div>
     <div class="miniForm" id="Education_FormContainer">
-        <% educations.forEach(education => { %>
-            <form class="education_details_form form" action="/edit/education?id=<%= education._id %>" method="POST">
+        <% educations.forEach((education,index) => { %>
+            <form class="education_details_form form <%= index>=1?'mt-2':'' %>" action="/edit/education?id=<%= education._id %>" method="POST">
                 <div class="field">
                     <label for="start"><span class="gradientText">Start</span>&nbsp;Date</label>
-                    <input type="date" value="<%= education.start %>" name="start" id="start">
+                    <input type="date" value="<%= new Date(education.start).toISOString().split("T")[0] %>" name="start" id="start">
                 </div>
                 <div class="field">
                     <label for="end"><span class="gradientText">End</span>&nbsp;Date</label>
-                    <input type="date" value="<%= education.end %>" name="end" id="end">
+                    <input type="date" value="<%= new Date(education.end).toISOString().split("T")[0] %>" name="end" id="end">
                 </div>
                 <div class="field">
                     <label for="school"><span class="gradientText">S</span>chool</label>
@@ -30,7 +30,7 @@
                 </div>
                 <div class="field">
                     <label for="description_education"><span class="gradientText">D</span>escription</label>
-                    <textarea name="description" value="<%= education.description %>" id="description_education" cols="30" rows="5"></textarea>
+                    <textarea name="description" id="description_education" cols="30" rows="5"><%= education.description %></textarea>
                 </div>
                 <div class="button-field">
                     <button type="submit"><i class="fas fa-save"></i>&nbsp;Save</button>

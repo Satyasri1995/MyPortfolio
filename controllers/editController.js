@@ -23,7 +23,6 @@ exports.editPage = (req, res, next) => {
     .lean()
     .exec()
     .then((profileR) => {
-      const cp = 11.11111111111111;
       const profile = {
         id: req.session.user.profile,
         basicDetails: { ...new BasicDetails() },
@@ -35,7 +34,7 @@ exports.editPage = (req, res, next) => {
         funfacts: [{ ...new FunFact(), _id: null }],
         languages: [{ ...new Language(), _id: null }],
         quote: null,
-        complete: 0,
+        inprogress: {},
       };
       if (profileR) {
         Object.keys(profileR.user).forEach((key) => {
@@ -50,32 +49,26 @@ exports.editPage = (req, res, next) => {
         });
         if (profileR.services.length) {
           profile.services = profileR.services;
-          profile.complete += cp;
         }
         if (profileR.codes.length) {
           profile.codes = profileR.codes;
-          profile.complete += cp;
         }
         if (profileR.educations.length) {
           profile.educations = profileR.educations;
-          profile.complete += cp;
         }
         if (profileR.experiences.length) {
           profile.experiences = profileR.experiences;
-          profile.complete += cp;
         }
         if (profileR.funfacts.length) {
           profile.funfacts = profileR.funfacts;
-          profile.complete += cp;
         }
         if (profileR.languages.length) {
           profile.languages = profileR.languages;
-          profile.complete += cp;
         }
         if (profileR.quote) {
           profile.quote = profileR.quote;
-          profile.complete += cp;
         }
+        profile.inprogress=profileR.inprogress;
       }
       const message = req.flash("message")[0];
       res.render("./../views/pages/editPage", {
@@ -187,7 +180,6 @@ exports.editService = (req, res, next) => {
     req.body.title,
     req.body.description
   );
-  console.log(serviceId);
   if (serviceId == "") {
     profile
       .findById(req.session.user.profile)
@@ -588,7 +580,7 @@ exports.editCode = (req, res, next) => {
     profile
       .findById(req.session.user.profile)
       .then((profileR) => {
-        profileR.cdes.push(codeDetails);
+        profileR.codes.push(codeDetails);
         return profileR.save();
       })
       .then((profileR) => {

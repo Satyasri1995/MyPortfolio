@@ -10,15 +10,15 @@
         </a>
     </div>
     <div class="miniForm" id="Experience_FormContainer">
-        <% experiences.forEach(experience => { %>
-            <form class="experience_details_form form" action="/edit/experience?id=<%= experience._id %>" method="POST">
+        <% experiences.forEach((experience,index) => { %>
+            <form class="experience_details_form form <%= index>=1?'mt-2':'' %>" action="/edit/experience?id=<%= experience._id %>" method="POST">
                 <div class="field">
                     <label for="start"><span class="gradientText">Start</span>&nbsp;Date</label>
-                    <input type="date" value="<%= experience.start %>" name="start" id="start">
+                    <input type="date" value="<%= new Date(experience.start).toISOString().split("T")[0] %>" name="start" id="start">
                 </div>
                 <div class="field">
                     <label for="end"><span class="gradientText">End</span>&nbsp;Date</label>
-                    <input type="date" value="<%= experience.end %>" name="end" id="end">
+                    <input type="date" value="<%= new Date(experience.end).toISOString().split("T")[0] %>" name="end" id="end">
                 </div>
                 <div class="field">
                     <label for="organisation"><span class="gradientText">O</span>rganisation</label>
@@ -30,7 +30,7 @@
                 </div>
                 <div class="field">
                     <label for="description_experience"><span class="gradientText">D</span>escription</label>
-                    <textarea name="description" value="<%= experience.description %>" id="description_experience" cols="30" rows="5"></textarea>
+                    <textarea name="description" id="description_experience" cols="30" rows="5"><%= experience.description %></textarea>
                 </div>
                 <div class="button-field">
                     <button type="submit"><i class="fas fa-save"></i>&nbsp;Save</button>

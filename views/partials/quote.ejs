@@ -2,10 +2,10 @@
     <div class="title">
         <span><span class="gradientText">Q</span>uote</span>
     </div>
-    <form class="quote_form form" action="/edit/quote?id=<%= id %>">
+    <form class="quote_form form" action="/edit/quote?id=<%= id %>" method="POST">
         <div class="area_field">
             <label for="quote"><span class="gradientText">Q</span>uote</label>
-            <textarea name="quote" id="quote" value="<%= quote %>" cols="30" rows="5"></textarea>
+            <textarea name="quote" id="quote"  cols="30" rows="5"><%= quote %></textarea>
         </div>
         <div class="button-field">
             <button type="submit"><i class="fas fa-save"></i>&nbsp;Save</button>

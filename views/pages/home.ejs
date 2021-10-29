@@ -8,8 +8,6 @@
     <%- include("./../lib/lib") %>
         <title>Document</title>
         <script>
-            var loginStatus='<%= login %>';
-            console.log(loginStatus);
             window.addEventListener('load', function () {
                 let words = ['Mean Stack Developer.', 'MangoDB.', 'Express.', 'Angular.', 'NodeJs.'];
                 typingEffect('typeText', words);
@@ -54,14 +52,6 @@
                                 <span class="tooltiptext">Contact</span>
                             </a>
                         </li>
-                        <% if (login) { %>
-                            <li class="navBar__list__item active" id="login_menu_item">
-                                <a class="contact tooltip" onclick="toggleMenu('profile__summary','login')">
-                                        <i class="fas fa-user-edit"></i>
-                                        <span class="tooltiptext">Edit</span>
-                                </a>
-                            </li>
-                        <% } %>
                     </ul>
                 </nav>
             </header>
@@ -374,18 +364,6 @@
                             </form>
                         </div>
                     </section>
-                    <% if (login) { %>
-                        <section class="profile__summary__item show" id="login">
-                            <div class="login">
-                                <div class="item_title">
-                                    <span class="gradientText">Edit</span>&nbsp;Data
-                                </div>
-                            </div>
-                            <div class="item_container">
-                                    <%- include('./../partials/edit') %>
-                            </div>
-                        </section>
-                    <% }else { %>   
                 </article>
             </article>
         </article>

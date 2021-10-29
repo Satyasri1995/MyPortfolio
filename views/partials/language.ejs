@@ -10,8 +10,8 @@
         </a>
     </div>
     <div class="miniForm" id="language_FormContainer">
-        <% languages.forEach(language => { %>
-            <form class="language_details_form form" action="/edit/language?id=<%= language._id %>" method="POST">
+        <% languages.forEach((language,index) => { %>
+            <form class="language_details_form form <%= index>=1?'mt-2':'' %>" action="/edit/language?id=<%= language._id %>" method="POST">
                 <div class="field">
                     <label for="language"><span class="gradientText">L</span>anguage</label>
                     <input type="text" value="<%= language.language %>" name="language" id="language">

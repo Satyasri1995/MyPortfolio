@@ -220,7 +220,7 @@ function removeEducation(id, size) {
 function addExperience() {
   const container = document.getElementById("Experience_FormContainer");
   const formLen = container.children.length;
-  const form = `<form class="experience_details_form form" action="/edit/experience?id=" method="POST">
+  const form = `<form class="experience_details_form form mt-2" action="/edit/experience?id=" method="POST">
   <div class="field">
       <label for="start${formLen}"><span class="gradientText">Start</span>&nbsp;Date</label>
       <input type="date" name="start" id="start${formLen}">
@@ -320,7 +320,7 @@ function removeLanguage(id, size) {
 function addMycode() {
   const container = document.getElementById("mycode_FormContainer");
   const formLen = container.children.length;
-  const form = `<form class="my_code_details_form form" action="/edit/code?id=" method="POST">
+  const form = `<form class="my_code_details_form form mt-2" action="/edit/code?id=" method="POST">
   <div class="field">
       <label for="icon_code${formLen}"><span class="gradientText">I</span>con</label>
       <input type="text" name="icon" id="icon_code${formLen}">
@@ -330,7 +330,7 @@ function addMycode() {
       <input type="text" name="title" id="title_code${formLen}">
   </div>
   <div class="field">
-      <label for="star${formLen}"><span class="gradientText">D</span>escription</label>
+      <label for="star${formLen}"><span class="gradientText">S</span>tars</label>
       <input type="number" name="star" id="star${formLen}">
   </div>
   <div class="button-field">

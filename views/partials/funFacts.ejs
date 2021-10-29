@@ -10,8 +10,8 @@
         </a>
     </div>
     <div class="miniForm" id="funFacts_FormContainer">
-        <% funfacts.forEach(funfact => { %>
-            <form class="fun_facts_details_form form" action="/edit/funfact?id=<%= funfact._id %>" method="POST">
+        <% funfacts.forEach((funfact,index) => { %>
+            <form class="fun_facts_details_form form <%= index>=1?'mt-2':'' %>" action="/edit/funfact?id=<%= funfact._id %>" method="POST">
                 <div class="field">
                     <label for="icon_facts"><span class="gradientText">I</span>con</label>
                     <input type="text" value="<%= funfact.icon %>" name="icon" id="icon_facts">

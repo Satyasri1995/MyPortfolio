@@ -11,11 +11,10 @@ const Experience = require("./../utils/models/experience");
 const FunFact = require("./../utils/models/funfact");
 const Language = require("./../utils/models/language");
 
-
 const profile = mongoose.model("profile", profileSchema);
 
 exports.viewProfile = (req, res, next) => {
-    const profileId = req.session.user ? req.session.user.profile : req.query.id;
+  const profileId = req.session.user ? req.session.user.profile : req.query.id;
   profile
     .findById(profileId)
     .populate("user")
@@ -34,7 +33,6 @@ exports.viewProfile = (req, res, next) => {
         languages: [{ ...new Language(), _id: null }],
         quote: null,
       };
-      console.log(profileR);
       if (profileR) {
         Object.keys(profileR.user).forEach((key) => {
           if (profile.basicDetails.hasOwnProperty(key)) {
@@ -73,13 +71,15 @@ exports.viewProfile = (req, res, next) => {
             message: message ? message : {},
             profile: profile,
           });
-        }else{
-            const message = new Message(
-                "warn",
-                "Please complete following sections "+profileR.inprogress.items+" to unlock your profile page"
-              );
-              req.flash("message", message);
-              res.redirect("/edit/updateProfile");
+        } else {
+          const message = new Message(
+            "warn",
+            "Please complete following sections " +
+              profileR.inprogress.items +
+              " to unlock your profile page"
+          );
+          req.flash("message", message);
+          res.redirect("/edit/updateProfile");
         }
       } else {
         message = new Message("warn", "Profile Not Found");
@@ -97,7 +97,6 @@ exports.viewProfile = (req, res, next) => {
 
 exports.isProfileReady = (req, res, next) => {
   const profileId = req.session.user ? req.session.user.profile : req.query.id;
-  console.log(req.session.user ? req.session.user.profile : req.query.id);
   if (profileId !== "") {
     profile
       .findById(profileId)
@@ -153,7 +152,7 @@ exports.isProfileReady = (req, res, next) => {
       })
       .then((profileR) => {
         if (profileR) {
-            next();
+          next();
         } else {
           const message = new Message("error", "Profile Not Found...!");
           req.flash("message", message);

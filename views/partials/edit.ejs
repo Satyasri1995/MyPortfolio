@@ -1,8 +1,12 @@
 <article class="edit_container">
     <div class="tab">
-        <button class="tablinks" onclick="openTab(event, 'basic_details')">Basic Details</button>
-        <button class="tablinks" onclick="openTab(event, 'about_details')">About</button>
-        <button class="tablinks" onclick="openTab(event, 'resume_details')">Resume</button>
+        <button class="tablinks" onclick="openTab(event, 'basic_details')"><span class="gradientText">Basic</span>&nbsp;Details</button>
+        <button class="tablinks" onclick="openTab(event, 'about_details')"><span class="gradientText">A</span>bout</button>
+        <button class="tablinks" onclick="openTab(event, 'resume_details')"><span class="gradientText">R</span>esume</button>
+        <% if (profile.inprogress.score==100) { %>
+            <span class="spacer"></span>
+            <a href="/profile/view?id=<%= profile.id %>" class="profile_link" target="_blank"><span><span class="gradientText">View</span>&nbsp;Profile</span></a>
+        <% } %>
     </div>
     <div id="basic_details" class="tabcontent">
         <%- include('./../partials/basicDetails',{...profile.basicDetails,id:profile.id}) %> 
@@ -17,5 +21,6 @@
         <%- include('./../partials/education',{educations:profile.educations,id:profile.id}) %> 
         <%- include('./../partials/experience',{experiences:profile.experiences,id:profile.id}) %> 
         <%- include('./../partials/language',{languages:profile.languages,id:profile.id}) %> 
+        <%- include('./../partials/code',{codes:profile.codes,id:profile.id}) %> 
     </div>
 </article>

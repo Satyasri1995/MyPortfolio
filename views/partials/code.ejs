@@ -10,8 +10,8 @@
         </a>
     </div>
     <div class="miniForm" id="mycode_FormContainer">
-        <% codes.forEach(code => { %>
-            <form class="my_code_details_form form" action="/edit/code?id=<%= code._id %>" method="POST">
+        <% codes.forEach((code,index) => { %>
+            <form class="my_code_details_form form <%= index>=1?'mt-2':'' %> " action="/edit/code?id=<%= code._id %>" method="POST">
                 <div class="field">
                     <label for="icon_code"><span class="gradientText">I</span>con</label>
                     <input type="text" value="<%= code.icon %>" name="icon" id="icon_code">
@@ -21,7 +21,7 @@
                     <input type="text" value="<%= code.title %>" name="title" id="title_code">
                 </div>
                 <div class="field">
-                    <label for="star"><span class="gradientText">D</span>escription</label>
+                    <label for="star"><span class="gradientText">S</span>tars</label>
                     <input type="number" value="<%= code.star %>" name="star" id="star">
                 </div>
                 <div class="button-field">
