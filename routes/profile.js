@@ -8,4 +8,6 @@ router.use(
   profileController.viewProfile
 );
 
+router.post("/message",profileController.sendMessage);
+
 module.exports = router;

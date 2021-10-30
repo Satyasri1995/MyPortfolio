@@ -14,8 +14,6 @@ function toggleMenu(pId, cId) {
     .classList.replace("inactive", "active");
 }
 
-
-
 function typingEffect(id, words) {
   let typeText = document.getElementById(id);
   let textToBeTyped = words[0];
@@ -67,6 +65,53 @@ function typingEffect(id, words) {
   }
   // start animation
   playAnim();
+}
+
+function sendMessage(event, id) {
+  const msg = document.getElementById("message");
+  msg.classList.remove("hide");
+  const msgContent = document.querySelector("#message .content");
+  const i = document.createElement("i");
+  if(document.querySelector("#message i.icon")){
+    document.querySelector("#message i.icon").remove();
+  }
+  event.preventDefault();
+  let fd={
+    name:event.target.name.value,
+    email:event.target.email.value,
+    message:event.target.message.value,
+    profileId:id
+  }
+  axios
+    .post("/profile/message", fd)
+    .then((res) => {
+      if (res.data.severity == "success") {
+        msg.classList.add("success");
+        msgContent.innerHTML = res.data.message;
+        i.classList.add("fa-check-circle");
+      } else if (res.severity == "warn") {
+        msg.classList.add("warn");
+        msgContent.innerHTML = res.data.message;
+        i.classList.add("fa-exclamation-circle");
+      } else {
+        msg.classList.add("error");
+        msgContent.innerHTML = res.data.message;
+        i.classList.add("fa-times-circle");
+      }
+      msg.prepend(i);
+      i.classList.add("icon");
+      i.classList.add("fas");
+      msg.classList.add("show");
+    })
+    .catch((error) => {
+      console.log(error)
+      msg.classList.add("error");
+      msgContent.innerHTML = res.data.message;
+      i.classList.add("fa-times-circle");
+      i.classList.add("icon");
+      i.classList.add("fas");
+      msg.classList.add("show");
+    });
 }
 
 function openTab(evt, tab) {

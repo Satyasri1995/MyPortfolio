@@ -32,7 +32,7 @@ app.use("/", (req, res, next) => {
   res.redirect('/auth/signin');
 });
 
-app.use(errorController.errorController);
+// app.use(errorController.errorController);
 
 mongoose
   .connect(

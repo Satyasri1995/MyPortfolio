@@ -10,6 +10,7 @@ const Education = require("./../utils/models/education");
 const Experience = require("./../utils/models/experience");
 const FunFact = require("./../utils/models/funfact");
 const Language = require("./../utils/models/language");
+const Response = require("./../utils/models/response");
 
 const profile = mongoose.model("profile", profileSchema);
 
@@ -173,4 +174,39 @@ exports.isProfileReady = (req, res, next) => {
     req.flash("message", message);
     res.redirect("/auth/signin");
   }
+};
+
+exports.sendMessage = (req, res, next) => {
+  const profileId = req.body.profileId;
+  const response = new Response(
+    req.body.name,
+    req.body.email,
+    req.body.message
+  );
+  profile
+    .findById(profileId)
+    .then((profileR) => {
+      profileR.responses.push(response);
+      return profileR.save();
+    })
+    .then((profileR) => {
+      if (profileR) {
+        res.json({
+          severity: "success",
+          message: "Message sent successfully",
+        });
+      } else {
+        res.json({
+          severity: "warn",
+          message: "Message sent successfully",
+        });
+      }
+    })
+    .catch((error) => {
+      console.log(error);
+      res.json({
+        severity: "error",
+        message: "Message sent failed please try again later.",
+      });
+    });
 };

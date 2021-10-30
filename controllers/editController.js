@@ -7,6 +7,7 @@ const Experience = require("./../utils/models/experience");
 const FunFact = require("./../utils/models/funfact");
 const Language = require("./../utils/models/language");
 const Message = require("./../utils/models/message");
+const Response = require('./../utils/models/response');
 
 const mongoose = require("mongoose");
 
@@ -33,6 +34,7 @@ exports.editPage = (req, res, next) => {
         experiences: [{ ...new Experience(), _id: null }],
         funfacts: [{ ...new FunFact(), _id: null }],
         languages: [{ ...new Language(), _id: null }],
+        responses:[{...new Response()}],
         quote: null,
         inprogress: {},
       };
@@ -69,6 +71,7 @@ exports.editPage = (req, res, next) => {
           profile.quote = profileR.quote;
         }
         profile.inprogress=profileR.inprogress;
+        profile.responses=profileR.responses;
       }
       const message = req.flash("message")[0];
       res.render("./../views/pages/editPage", {

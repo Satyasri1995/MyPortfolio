@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.min.js" integrity="sha512-u9akINsQsAkG9xjc1cnGF4zw5TFDwkxuc9vUp5dltDWYCSmyd0meygbvgXrlc/z7/o4a19Fb5V0OUE58J7dcyw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <%- include("./../lib/lib") %>
         <title>Document</title>
         <script>
@@ -28,6 +29,7 @@
         </div>
     </div>
     <main>
+        <%- include('./../partials/message',{status:'',message:''}) %> 
         <article class="container">
             <header class="header">
                 <nav class="navBar">
@@ -133,7 +135,7 @@
                             <span class="gradientText">Contact</span>&nbsp;Form
                         </div>
                         <div class="item_container">
-                            <form class="contact_form">
+                            <form class="contact_form" id="contact_form" onsubmit="sendMessage(event,'<%= profile.id %>')">
                                 <div class="field">
                                     <label for="name" class="name"><span class="gradientText">N</span>ame</label>
                                     <input type="text" name="name" id="name" required>
