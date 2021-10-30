@@ -10,6 +10,8 @@ const editRoutes = require('./routes/edit');
 const deleteRoute = require('./routes/delete');
 const profileRoute = require('./routes/profile');
 
+const errorController=require('./controllers/errorController');
+
 const app = express();
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: false }));
@@ -29,6 +31,8 @@ app.use('/profile',profileRoute);
 app.use("/", (req, res, next) => {
   res.redirect('/auth/signin');
 });
+
+app.use(errorController.errorController);
 
 mongoose
   .connect(

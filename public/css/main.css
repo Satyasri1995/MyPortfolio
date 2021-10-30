@@ -29,16 +29,16 @@
     animation: linear 50s squares infinite;
     top: -50%; }
     .bubbles__bubble:nth-child(1) {
-      left: 80%;
+      left: 86%;
       animation-delay: 0s; }
     .bubbles__bubble:nth-child(2) {
-      left: 91%;
+      left: 99%;
       animation-delay: 10s; }
     .bubbles__bubble:nth-child(3) {
-      left: 96%;
+      left: 25%;
       animation-delay: 5s; }
     .bubbles__bubble:nth-child(4) {
-      left: 52%;
+      left: 51%;
       animation-delay: 15s; }
 
 main {
@@ -241,8 +241,7 @@ main {
       display: flex;
       flex-wrap: wrap;
       padding: 1rem 0rem;
-      flex-direction: row;
-      justify-content: space-between; }
+      flex-direction: row; }
       .profile__summary__item .item_container .box {
         width: 20rem;
         display: flex;
@@ -257,10 +256,12 @@ main {
             justify-content: space-between; }
   .profile__summary__item.show {
     width: 100%;
-    opacity: 1; }
+    opacity: 1;
+    pointer-events: auto; }
   .profile__summary__item.hide {
     width: 0%;
-    opacity: 0; }
+    opacity: 0;
+    pointer-events: none; }
 
 .basic_details__profile_summary {
   padding: 0.5rem; }
@@ -292,11 +293,7 @@ main {
   align-items: center;
   box-shadow: 0px 0px 2px 0px rgba(120, 204, 109, 0.5); }
   .box2 .icon {
-    color: white;
-    padding: 1rem;
-    border-radius: 100%;
-    background: #78cc6d;
-    font-size: 30px;
+    font-size: 4rem;
     margin: 1rem; }
   .box2 .title {
     font-size: 20px;
@@ -317,12 +314,10 @@ main {
   justify-content: center;
   box-shadow: 0px 0px 2px 0px rgba(120, 204, 109, 0.5); }
   .box3 .icon {
-    color: #78cc6d;
-    border-radius: 100%;
-    font-size: 30px;
+    font-size: 4rem;
     margin: 1rem; }
   .box3 .title {
-    font-size: 20px;
+    font-size: 16px;
     color: #646464;
     margin: 1rem; }
 
@@ -538,7 +533,7 @@ button[type='submit'] {
 .profile_link {
   color: inherit;
   text-decoration: none;
-  margin: 1rem; }
+  margin: 10px; }
   .profile_link:hover {
     background: -webkit-linear-gradient(#78cc6d, #50a3a2);
     -webkit-background-clip: text;

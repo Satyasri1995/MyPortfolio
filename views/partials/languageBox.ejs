@@ -1,0 +1,44 @@
+<div class="box4">
+    <div class="box4__item_title">
+        <span class="gradientText"><%= language.language[0] %></span><%= language.language.substring(1,language.language.length) %> 
+    </div>
+    <div class="item">
+        <div class="head">
+            <span class="title__title">
+                Read
+            </span>
+            <span class="head__value">
+               <%= language.read %> 
+            </span>
+        </div>
+        <div class="progress">
+            <div class="bar" style=<%= "width:"+language.read+"%" %>></div>
+        </div>
+    </div>
+    <div class="item">
+        <div class="head">
+            <span class="title__title">
+                Write
+            </span>
+            <span class="head__value">
+                <%= language.write %> 
+            </span>
+        </div>
+        <div class="progress">
+            <div class="bar" style=<%= "width:"+language.write+"%" %>></div>
+        </div>
+    </div>
+    <div class="item">
+        <div class="head">
+            <span class="title__title">
+                Speak
+            </span>
+            <span class="head__value">
+                <%= language.speak %> 
+            </span>
+        </div>
+        <div class="progress">
+            <div class="bar" style=<%= "width:"+language.speak+"%" %>></div>
+        </div>
+    </div>
+</div>

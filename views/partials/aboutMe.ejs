@@ -1,3 +1,29 @@
+<script>
+    var handleFileSelect = function (evt) {
+        var files = evt.target.files;
+        var file = files[0];
+
+        if (files && file) {
+            var reader = new FileReader();
+
+            reader.onload = function (readerEvt) {
+                var binaryString = readerEvt.target.result;
+                document.getElementById("photo").innerHTML = "data:image/jpeg;base64,"+btoa(binaryString);
+            };
+
+            reader.readAsBinaryString(file);
+        }
+    };
+
+    window.addEventListener('load', () => {
+        if (window.File && window.FileReader && window.FileList && window.Blob) {
+            document.getElementById('photop').addEventListener('change', handleFileSelect, false);
+        } else {
+            alert('The File APIs are not fully supported in this browser.');
+        }
+    })
+
+</script>
 <section class="about_me form_container">
     <div class="title">
         <span><span class="gradientText">About</span>&nbsp;Me</span>
@@ -18,6 +44,11 @@
         <div class="field">
             <label for="residence"><span class="gradientText">R</span>esidence</label>
             <input type="text" value="<%= residence %>" name="residence" id="residence">
+        </div>
+        <div class="field">
+            <label for="photop"><span class="gradientText">P</span>hoto</label>
+            <input type="file" name="photop" id="photop">
+            <textarea type="text" name="photo" id="photo" hidden></textarea>
         </div>
         <div class="field">
             <label for="address"><span class="gradientText">A</span>ddress</label>

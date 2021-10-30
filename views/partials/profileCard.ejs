@@ -1,0 +1,51 @@
+<section class="profile__card">
+    <div class="profile__card__cover">
+        <ul class="bubbles">
+            <li class="bubbles__bubble"></li>
+            <li class="bubbles__bubble"></li>
+            <li class="bubbles__bubble"></li>
+            <li class="bubbles__bubble"></li>
+        </ul>
+        <div class="profile__card__cover__profileImageContainer">
+            <img class="profilePicture" src="<%= user.photo %>" alt="User Image">
+        </div>
+    </div>
+    <div class="profile__card__contacts">
+        <div class="profile__card__contacts__data">
+            <div class="profile__card__contacts__data__name"><%= user.name %></div>
+            <div class="profile__card__contacts__data__title gradientText" id="typeText">
+                Mean Stack Developer
+            </div>
+            <ul class="profile__card__contacts__data__contacts">
+                <li>
+                    <a>
+                        <i class="fas fa-envelope"></i>
+                        <span><%= user.email %></span>
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <i class="fas fa-phone"></i>
+                        <span><%= user.phone %></span>
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <i class="	fas fa-phone"></i>
+                        <span><%= user.phone_alt %></span>
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span><%= user.location %> </span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="profile__card__contacts__buttons">
+            <button class="profileBtn">Download Resume</button>
+            <button class="profileBtn">Contact Me</button>
+        </div>
+    </div>
+</section>

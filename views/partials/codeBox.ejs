@@ -1,0 +1,9 @@
+<div class="box4">
+    <i class="fab fa-<%= code.icon %>  icon gradientText"></i>
+    <span class="icon_title "><%= code.title %> </span>
+    <div class="stars">
+        <% for( let index = 1; index <= 5; index++ ) { %>
+            <div class="star <%= index<=code.star?'active':'' %>"></div>
+        <% } %>
+    </div>
+</div>

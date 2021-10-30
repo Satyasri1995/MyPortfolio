@@ -9,11 +9,9 @@
         <title>Document</title>
         <script>
             window.addEventListener('load', function () {
-                let words = ['Mean Stack Developer.', 'MangoDB.', 'Express.', 'Angular.', 'NodeJs.'];
+                let words = "<%= profile.basicDetails.stack %>";
+                words=words.split(',')
                 typingEffect('typeText', words);
-                if (loginStatus) {
-                    openTab(event, 'basic_details');
-                }
             });
         </script>
 </head>
@@ -34,7 +32,7 @@
             <header class="header">
                 <nav class="navBar">
                     <ul class="navBar__list">
-                        <li class="navBar__list__item inactive" id="about_menu_item">
+                        <li class="navBar__list__item active" id="about_menu_item">
                             <a class="about tooltip" onclick="toggleMenu('profile__summary','about')">
                                 <i class="fas fa-user-tie"></i>
                                 <span class="tooltiptext">About</span>
@@ -56,116 +54,18 @@
                 </nav>
             </header>
             <article class="profile">
-                <section class="profile__card">
-                    <div class="profile__card__cover">
-                        <ul class="bubbles">
-                            <li class="bubbles__bubble"></li>
-                            <li class="bubbles__bubble"></li>
-                            <li class="bubbles__bubble"></li>
-                            <li class="bubbles__bubble"></li>
-                        </ul>
-                        <div class="profile__card__cover__profileImageContainer">
-                            <img class="profilePicture" src="/images/user.png" alt="User Image">
-                        </div>
-                    </div>
-                    <div class="profile__card__contacts">
-                        <div class="profile__card__contacts__data">
-                            <div class="profile__card__contacts__data__name">
-                                Davuloori Venkata Satya Ravi Teja
-                            </div>
-                            <div class="profile__card__contacts__data__title gradientText" id="typeText">
-                                Mean Stack Developer
-                            </div>
-                            <ul class="profile__card__contacts__data__contacts">
-                                <li>
-                                    <a>
-                                        <i class="fas fa-envelope"></i>
-                                        <span>satyasri.125110044@gmail.com</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a>
-                                        <i class="	fas fa-phone"></i>
-                                        <span>+91 7981347949</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a>
-                                        <i class="	fas fa-phone"></i>
-                                        <span>+91 7382772384</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a>
-                                        <i class="fas fa-map-marker-alt"></i>
-                                        <span>Visakhapatnam - 530027</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="profile__card__contacts__buttons">
-                            <button class="profileBtn">Download Resume</button>
-                            <button class="profileBtn">Contact Me</button>
-                        </div>
-                    </div>
-                </section>
+                <%- include('./../partials/profileCard',{user:{...profile.basicDetails,photo:profile.about.photo}}) %> 
                 <article class="profile__summary" id="profile__summary">
-                    <section class="profile__summary__item hide" id="about">
-                        <div class="basic_details">
-                            <div class="item_title">
-                                <span class="gradientText">About</span>&nbsp;Me
-                            </div>
-                            <div class="item_container">
-                                <div class="basic_details__profile_summary box">
-                                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quod maxime nostrum,
-                                    repudiandae qui ipsum architecto dolorem error pariatur repellat ullam magni
-                                    provident ut blanditiis sunt suscipit! Harum accusantium aspernatur necessitatibus?
-                                </div>
-                                <div class="basic_details__info box">
-                                    <ul class="list">
-                                        <li class="list__item">
-                                            <span class="highlight">Age.....</span><span>26</span>
-                                        </li>
-                                        <li class="list__item">
-                                            <span class="highlight">Gender.....</span><span>Male</span>
-                                        </li>
-                                        <li class="list__item">
-                                            <span class="highlight">Residence.....</span><span>India</span>
-                                        </li>
-                                        <li class="list__item">
-                                            <span class="highlight">Address.....</span><span>Andhra Pradesh,India</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+                    <section class="profile__summary__item show" id="about">
+                        <%- include('./../partials/aboutDetails',{about:profile.about}) %> 
                         <div class="services">
                             <div class="item_title">
                                 <span class="gradientText">My</span>&nbsp;Services
                             </div>
                             <div class="item_container" id="myServicesContainer">
-                                <div class="box2">
-                                    <div class="icon">
-                                        <i class="fas fa-code"></i>
-                                    </div>
-                                    <div class="title">
-                                        UI Developer
-                                    </div>
-                                    <div class="description">
-                                        Transforming UI Design to Interactive Html Code
-                                    </div>
-                                </div>
-                                <div class="box2">
-                                    <div class="icon">
-                                        <i class="fas fa-code"></i>
-                                    </div>
-                                    <div class="title">
-                                        UI Developer
-                                    </div>
-                                    <div class="description">
-                                        Transforming UI Design to Interactive Html Code
-                                    </div>
-                                </div>
+                                <% profile.services.forEach(service => { %>
+                                    <%- include('./../partials/serviceBox',{service:service}) %> 
+                                <% }) %>
                             </div>
                         </div>
                         <div class="fun_facts">
@@ -173,14 +73,9 @@
                                 <span class="gradientText">Fun</span>&nbsp;Facts
                             </div>
                             <div class="item_container">
-                                <div class="box3">
-                                    <div class="icon">
-                                        <i class="fas fa-code"></i>
-                                    </div>
-                                    <div class="title">
-                                        UI Developer
-                                    </div>
-                                </div>
+                                <% profile.funfacts.forEach(funfact => { %>
+                                    <%- include('./../partials/funfactBox',{funfact:funfact}) %> 
+                                <% }) %>
                             </div>
                         </div>
                         <div class="quotes">
@@ -189,8 +84,7 @@
                             </div>
                             <div class="item_container">
                                 <q class="quote">
-                                    Only when you do not know yourself, the opinion of the other people becomes
-                                    important.
+                                   <%= profile.quote %> 
                                 </q>
                             </div>
                         </div>
@@ -204,143 +98,37 @@
                                 <span class="gradientText"><i class="fas fa-book-reader"></i></span>&nbsp;Education
                             </div>
                             <div class="box4_container">
-                                <div class="box4">
-                                    <span class="time">
-                                        2017-Present
-                                    </span>
-                                    <span class="title">
-                                        Sastra University
-                                    </span>
-                                    <span class="sub_title">
-                                        Tamil Nadu
-                                    </span>
-                                    <div class="description">
-                                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quam assumenda quidem
-                                        dicta placeat rem ea suscipit sapiente.
-                                    </div>
-                                </div>
+                                <% profile.educations.forEach(education => { %>
+                                 <%- include('./../partials/educationBox',{education:education}) %> 
+                                <% }) %>
                             </div>
                             <div class="box4_title">
                                 <span class="gradientText"><i class="fas fa-briefcase"></i></span>&nbsp;Experience
                             </div>
                             <div class="box4_container">
-                                <div class="box4">
-                                    <span class="time">
-                                        2017-Present
-                                    </span>
-                                    <span class="title">
-                                        Sastra University
-                                    </span>
-                                    <span class="sub_title">
-                                        Tamil Nadu
-                                    </span>
-                                    <div class="description">
-                                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quam assumenda quidem
-                                        dicta placeat rem ea suscipit sapiente.
-                                    </div>
-                                </div>
+                                <% profile.experiences.forEach(experience => { %>
+                                 <%- include('./../partials/experienceBox',{experience:experience}) %> 
+                                <% }) %>
                             </div>
                             <div class="box4_title">
                                 <span class="gradientText"><i class="fas fa-language"></i></span>&nbsp;Languages
                             </div>
                             <div class="box4_container">
-                                <div class="box4">
-                                    <div class="box4__item_title">
-                                        <span class="gradientText">E</span>nglish
-                                    </div>
-                                    <div class="item">
-                                        <div class="head">
-                                            <span class="title__title">
-                                                Read
-                                            </span>
-                                            <span class="head__value">
-                                                85%
-                                            </span>
-                                        </div>
-                                        <div class="progress">
-                                            <div class="bar" style="width: 85%;"></div>
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="head">
-                                            <span class="title__title">
-                                                Write
-                                            </span>
-                                            <span class="head__value">
-                                                85%
-                                            </span>
-                                        </div>
-                                        <div class="progress">
-                                            <div class="bar" style="width: 85%;"></div>
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="head">
-                                            <span class="title__title">
-                                                Speak
-                                            </span>
-                                            <span class="head__value">
-                                                85%
-                                            </span>
-                                        </div>
-                                        <div class="progress">
-                                            <div class="bar" style="width: 85%;"></div>
-                                        </div>
-                                    </div>
-                                </div>
+                                <% profile.languages.forEach(language => { %>
+                                 <%- include('./../partials/languageBox',{language:language}) %> 
+                                <% }) %>
                             </div>
                             <div class="box4_title">
                                 <span class="gradientText"><i class="fas fa-laptop-code"></i></span>&nbsp;Coding
                             </div>
                             <div class="box4_container">
-                                <div class="box4">
-                                    <i class="fab fa-angular icon gradientText"></i>
-                                    <span class="icon_title ">Angular</span>
-                                    <div class="stars">
-                                        <div class="star active"></div>
-                                        <div class="star active"></div>
-                                        <div class="star active"></div>
-                                        <div class="star active"></div>
-                                        <div class="star"></div>
-                                    </div>
-                                </div>
-                                <div class="box4">
-                                    <i class="fab fa-html5 icon gradientText"></i>
-                                    <span class="icon_title ">HTML</span>
-                                    <div class="stars">
-                                        <div class="star active"></div>
-                                        <div class="star active"></div>
-                                        <div class="star active"></div>
-                                        <div class="star active"></div>
-                                        <div class="star"></div>
-                                    </div>
-                                </div>
-                                <div class="box4">
-                                    <i class="fab fa-css3-alt icon gradientText"></i>
-                                    <span class="icon_title ">CSS</span>
-                                    <div class="stars">
-                                        <div class="star active"></div>
-                                        <div class="star active"></div>
-                                        <div class="star active"></div>
-                                        <div class="star active"></div>
-                                        <div class="star"></div>
-                                    </div>
-                                </div>
-                                <div class="box4">
-                                    <i class="fab fa-js icon gradientText"></i>
-                                    <span class="icon_title ">JavaScript</span>
-                                    <div class="stars">
-                                        <div class="star active"></div>
-                                        <div class="star active"></div>
-                                        <div class="star active"></div>
-                                        <div class="star active"></div>
-                                        <div class="star"></div>
-                                    </div>
-                                </div>
+                                <% profile.codes.forEach(code => { %>
+                                    <%- include('./../partials/codeBox',{code:code}) %> 
+                                <% }) %>
                             </div>
                         </div>
                     </section>
-                    <section class="profile__summary__item show" id="contact">
+                    <section class="profile__summary__item hide" id="contact">
                         <div class="item_title">
                             <span class="gradientText">Contact</span>&nbsp;Form
                         </div>

@@ -6,6 +6,10 @@ const aboutSchema = new Schema({
     type: String,
     required: false,
   },
+  photo:{
+    type: String,
+    required: false,
+  },
   age: {
     type: Number,
     required: false,

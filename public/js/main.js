@@ -14,6 +14,8 @@ function toggleMenu(pId, cId) {
     .classList.replace("inactive", "active");
 }
 
+
+
 function typingEffect(id, words) {
   let typeText = document.getElementById(id);
   let textToBeTyped = words[0];
@@ -105,7 +107,7 @@ function addMyService() {
   document.getElementById("removeMyService").classList.remove("disabled");
 }
 
-function removeMyService(id,size) {
+function removeMyService(id, size) {
   const container = document.getElementById("myService_FormContainer");
   const formLen = container.children.length;
   if (formLen > 1) {
@@ -116,10 +118,10 @@ function removeMyService(id,size) {
       form.style.visibility = "hidden";
       document.body.appendChild(form);
       form.submit();
-    }else{
+    } else {
       container.removeChild(container.lastElementChild);
-      if(container.children.length==1){
-        document.getElementById('removeMyService').classList.add('disabled');
+      if (container.children.length == 1) {
+        document.getElementById("removeMyService").classList.add("disabled");
       }
     }
   }
@@ -158,8 +160,8 @@ function removeFunFact(id, size) {
       form.submit();
     } else {
       container.removeChild(container.lastElementChild);
-      if(container.children.length==1){
-        document.getElementById('removeFunFact').classList.add('disabled');
+      if (container.children.length == 1) {
+        document.getElementById("removeFunFact").classList.add("disabled");
       }
     }
   }
@@ -210,8 +212,8 @@ function removeEducation(id, size) {
       form.submit();
     } else {
       container.removeChild(container.lastElementChild);
-      if(container.children.length==1){
-        document.getElementById('removeEducation').classList.add('disabled');
+      if (container.children.length == 1) {
+        document.getElementById("removeEducation").classList.add("disabled");
       }
     }
   }
@@ -262,8 +264,8 @@ function removeExperience(id, size) {
       form.submit();
     } else {
       container.removeChild(container.lastElementChild);
-      if(container.children.length==1){
-        document.getElementById('removeExperience').classList.add('disabled');
+      if (container.children.length == 1) {
+        document.getElementById("removeExperience").classList.add("disabled");
       }
     }
   }
@@ -310,8 +312,8 @@ function removeLanguage(id, size) {
       form.submit();
     } else {
       container.removeChild(container.lastElementChild);
-      if(container.children.length==1){
-        document.getElementById('removeLanguage').classList.add('disabled');
+      if (container.children.length == 1) {
+        document.getElementById("removeLanguage").classList.add("disabled");
       }
     }
   }
@@ -354,8 +356,8 @@ function removeMycode(id, size) {
       form.submit();
     } else {
       container.removeChild(container.lastElementChild);
-      if(container.children.length==1){
-        document.getElementById('removeMycode').classList.add('disabled');
+      if (container.children.length == 1) {
+        document.getElementById("removeMycode").classList.add("disabled");
       }
     }
   }

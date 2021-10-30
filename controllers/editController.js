@@ -129,6 +129,7 @@ exports.editBasicDetails = (req, res, next) => {
 exports.editAbout = (req, res, next) => {
   const about = new About(
     req.body.profile_summary,
+    req.body.photo,
     req.body.age,
     req.body.gender,
     req.body.residence,
@@ -139,6 +140,7 @@ exports.editAbout = (req, res, next) => {
     .findById(req.session.user.profile)
     .then((profileR) => {
       profileR.about.profile_summary = about.profile_summary;
+      profileR.about.photo = about.photo;
       profileR.about.age = about.age;
       profileR.about.gender = about.gender;
       profileR.about.residence = about.residence;
