@@ -3,6 +3,7 @@
         <button class="tablinks" onclick="openTab(event, 'basic_details')"><span class="gradientText">Basic</span>&nbsp;Details</button>
         <button class="tablinks" onclick="openTab(event, 'about_details')"><span class="gradientText">A</span>bout</button>
         <button class="tablinks" onclick="openTab(event, 'resume_details')"><span class="gradientText">R</span>esume</button>
+        <button class="tablinks" onclick="openTab(event, 'response_details')"><span class="gradientText">M</span>essages</button>
         <% if (profile.inprogress.score==100) { %>
             <span class="spacer"></span>
             <a href="/profile/view?id=<%= profile.id %>" class="profile_link" target="_blank"><span><span class="gradientText">View</span>&nbsp;Profile</span></a>
@@ -22,5 +23,8 @@
         <%- include('./../partials/experience',{experiences:profile.experiences,id:profile.id}) %> 
         <%- include('./../partials/language',{languages:profile.languages,id:profile.id}) %> 
         <%- include('./../partials/code',{codes:profile.codes,id:profile.id}) %> 
+    </div>
+    <div id="response_details" class="tabcontent">
+        <%- include('./../partials/responses',{responses:profile.responses}) %> 
     </div>
 </article>

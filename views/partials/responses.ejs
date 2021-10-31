@@ -1,0 +1,42 @@
+<section class="education_details form_container mt-2">
+    <div class="title">
+        <span><span class="gradientText">M</span>essages</span>
+        <span class="spacer"></span>
+        <span class="noselect"><%= responses.filter(item=>item.status==false).length %> Unread Messages</span>
+    </div>
+    <div class="miniForm" id="response_Container">
+        <% responses.forEach((response,index) => { %>
+            <div class="response <%= index>=1?'mt-2':'' %> ">
+                <div class="name">
+                    <div class="gradientText">Name</div>&nbsp;:&nbsp;<%= response.name %> 
+                </div>
+                <div class="email">
+                    <div class="gradientText">E-mail</div>&nbsp;:&nbsp;<a href="mailto:<%= response.email %>"><%= response.email %> </a>
+                </div>
+                <div class="date">
+                    <div class="gradientText">Received Date</div>&nbsp;:&nbsp;<%= new Date(response.date).toDateString() %> 
+                </div>
+                <div class="status">
+                    <div class="gradientText">Status</div>&nbsp;:&nbsp;<%= response.status?'Marked as read':'Unread Message' %> 
+                </div>
+                <div class="message">
+                    <div class="gradientText">Message&nbsp;:</div><%= response.message %> 
+                </div>
+                <div class="actions">
+                    <form action="/delete/message?id=<%= response._id %>" method="POST">
+                        <button type="submit"><i class="fas fa-trash-alt"></i>&nbsp;Delete Messagge</button>
+                    </form>
+                    <% if (!response.status) { %>
+                        <form action="/profile/markAsRead?id=<%= response._id %>" method="POST">
+                            <button type="submit"><i class="fas fa-book-open"></i>&nbsp;Mark As Read</button>
+                        </form>
+                    <% }else{ %>
+                        <form action="/profile/markAsUnRead?id=<%= response._id %>" method="POST">
+                            <button type="submit"><i class="fas fa-book-open"></i>&nbsp;Mark As UnRead</button>
+                        </form>
+                    <% } %>
+                </div>
+            </div>
+        <% }) %>
+    </div>
+</section>

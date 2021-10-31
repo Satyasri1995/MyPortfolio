@@ -39,6 +39,15 @@ const profileSchema = new Schema({
         type: String,
         required: false,
       },
+      status:{
+        type:Boolean,
+        required:false,
+        default:false
+      },
+      date:{
+        type:mongoose.SchemaTypes.Date,
+        required:true
+      }
     },
   ],
   inprogress: {

@@ -220,3 +220,36 @@ exports.deleteCode = (req, res, next) => {
       res.redirect("/edit/updateProfile");
     });
 };
+
+exports.deleteMessage=(req,res,next)=>{
+  const messageId=req.query.id;
+  profile.findById(req.session.user.profile)
+  .then(profileR=>{
+    profileR.responses.id(messageId).remove();
+    return profileR.save();
+  }).then(profileR=>{
+    if(profileR){
+      const message = new Message(
+        "success",
+        "Message deleted successfully."
+      );
+      req.flash("message", message);
+      res.redirect("/edit/updateProfile");
+    }else{
+      const message = new Message(
+        "warn",
+        "Message failed to delete."
+      );
+      req.flash("message", message);
+      res.redirect("/edit/updateProfile");
+    }
+  }).catch(error=>{
+    console.log(error);
+    const message = new Message(
+      "success",
+      "Error occured while deleting message."
+    );
+    req.flash("message", message);
+    res.redirect("/edit/updateProfile");
+  });
+}

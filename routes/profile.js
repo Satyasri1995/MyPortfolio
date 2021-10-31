@@ -10,4 +10,8 @@ router.use(
 
 router.post("/message",profileController.sendMessage);
 
+router.post('/markAsRead',profileController.markAsRead);
+
+router.post('/markAsUnRead',profileController.markAsUnRead);
+
 module.exports = router;

@@ -5,13 +5,25 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.min.js" integrity="sha512-u9akINsQsAkG9xjc1cnGF4zw5TFDwkxuc9vUp5dltDWYCSmyd0meygbvgXrlc/z7/o4a19Fb5V0OUE58J7dcyw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.min.js"
+        integrity="sha512-u9akINsQsAkG9xjc1cnGF4zw5TFDwkxuc9vUp5dltDWYCSmyd0meygbvgXrlc/z7/o4a19Fb5V0OUE58J7dcyw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <%- include("./../lib/lib") %>
-        <title>Document</title>
+        <meta id="meta-application-name" name="application-name" content="<%= profile.basicDetails.name %> Portfolio" />
+        <meta id="meta-description" name="description"
+            content="<%= profile.about.profile__summary %>" />
+        <meta id="meta-keywords" name="keywords"
+            content="<%= profile.basicDetails.stack.split(",").map(stack=>{
+                return stack+" Developer"
+            }).toString() %>" />
+
+        <title>
+            <%= profile.basicDetails.name %>
+        </title>
         <script>
             window.addEventListener('load', function () {
                 let words = "<%= profile.basicDetails.stack %>";
-                words=words.split(',')
+                words = words.split(',')
                 typingEffect('typeText', words);
             });
         </script>
@@ -29,134 +41,140 @@
         </div>
     </div>
     <main>
-        <%- include('./../partials/message',{status:'',message:''}) %> 
-        <article class="container">
-            <header class="header">
-                <nav class="navBar">
-                    <ul class="navBar__list">
-                        <li class="navBar__list__item active" id="about_menu_item">
-                            <a class="about tooltip" onclick="toggleMenu('profile__summary','about')">
-                                <i class="fas fa-user-tie"></i>
-                                <span class="tooltiptext">About</span>
-                            </a>
-                        </li>
-                        <li class="navBar__list__item inactive" id="resume_menu_item">
-                            <a class="resume tooltip" onclick="toggleMenu('profile__summary','resume')">
-                                <i class="fas fa-file-alt"></i>
-                                <span class="tooltiptext">Resume</span>
-                            </a>
-                        </li>
-                        <li class="navBar__list__item inactive" id="contact_menu_item">
-                            <a class="contact tooltip" onclick="toggleMenu('profile__summary','contact')">
-                                <i class="fas fa-address-card"></i>
-                                <span class="tooltiptext">Contact</span>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-            </header>
-            <article class="profile">
-                <%- include('./../partials/profileCard',{user:{...profile.basicDetails,photo:profile.about.photo}}) %> 
-                <article class="profile__summary" id="profile__summary">
-                    <section class="profile__summary__item show" id="about">
-                        <%- include('./../partials/aboutDetails',{about:profile.about}) %> 
-                        <div class="services">
-                            <div class="item_title">
-                                <span class="gradientText">My</span>&nbsp;Services
-                            </div>
-                            <div class="item_container" id="myServicesContainer">
-                                <% profile.services.forEach(service => { %>
-                                    <%- include('./../partials/serviceBox',{service:service}) %> 
-                                <% }) %>
-                            </div>
-                        </div>
-                        <div class="fun_facts">
-                            <div class="item_title">
-                                <span class="gradientText">Fun</span>&nbsp;Facts
-                            </div>
-                            <div class="item_container">
-                                <% profile.funfacts.forEach(funfact => { %>
-                                    <%- include('./../partials/funfactBox',{funfact:funfact}) %> 
-                                <% }) %>
-                            </div>
-                        </div>
-                        <div class="quotes">
-                            <div class="item_title">
-                                <span class="gradientText">Q</span>uote
-                            </div>
-                            <div class="item_container">
-                                <q class="quote">
-                                   <%= profile.quote %> 
-                                </q>
-                            </div>
-                        </div>
-                    </section>
-                    <section class="profile__summary__item hide" id="resume">
-                        <div class="item_title">
-                            <span class="gradientText">R</span>esume
-                        </div>
-                        <div class="item_container">
-                            <div class="box4_title">
-                                <span class="gradientText"><i class="fas fa-book-reader"></i></span>&nbsp;Education
-                            </div>
-                            <div class="box4_container">
-                                <% profile.educations.forEach(education => { %>
-                                 <%- include('./../partials/educationBox',{education:education}) %> 
-                                <% }) %>
-                            </div>
-                            <div class="box4_title">
-                                <span class="gradientText"><i class="fas fa-briefcase"></i></span>&nbsp;Experience
-                            </div>
-                            <div class="box4_container">
-                                <% profile.experiences.forEach(experience => { %>
-                                 <%- include('./../partials/experienceBox',{experience:experience}) %> 
-                                <% }) %>
-                            </div>
-                            <div class="box4_title">
-                                <span class="gradientText"><i class="fas fa-language"></i></span>&nbsp;Languages
-                            </div>
-                            <div class="box4_container">
-                                <% profile.languages.forEach(language => { %>
-                                 <%- include('./../partials/languageBox',{language:language}) %> 
-                                <% }) %>
-                            </div>
-                            <div class="box4_title">
-                                <span class="gradientText"><i class="fas fa-laptop-code"></i></span>&nbsp;Coding
-                            </div>
-                            <div class="box4_container">
-                                <% profile.codes.forEach(code => { %>
-                                    <%- include('./../partials/codeBox',{code:code}) %> 
-                                <% }) %>
-                            </div>
-                        </div>
-                    </section>
-                    <section class="profile__summary__item hide" id="contact">
-                        <div class="item_title">
-                            <span class="gradientText">Contact</span>&nbsp;Form
-                        </div>
-                        <div class="item_container">
-                            <form class="contact_form" id="contact_form" onsubmit="sendMessage(event,'<%= profile.id %>')">
-                                <div class="field">
-                                    <label for="name" class="name"><span class="gradientText">N</span>ame</label>
-                                    <input type="text" name="name" id="name" required>
+        <%- include('./../partials/message',{status:'',message:''}) %>
+            <article class="container">
+                <header class="header">
+                    <nav class="navBar">
+                        <ul class="navBar__list">
+                            <li class="navBar__list__item active" id="about_menu_item">
+                                <a class="about tooltip" onclick="toggleMenu('profile__summary','about')">
+                                    <i class="fas fa-user-tie"></i>
+                                    <span class="tooltiptext">About</span>
+                                </a>
+                            </li>
+                            <li class="navBar__list__item inactive" id="resume_menu_item">
+                                <a class="resume tooltip" onclick="toggleMenu('profile__summary','resume')">
+                                    <i class="fas fa-file-alt"></i>
+                                    <span class="tooltiptext">Resume</span>
+                                </a>
+                            </li>
+                            <li class="navBar__list__item inactive" id="contact_menu_item">
+                                <a class="contact tooltip" onclick="toggleMenu('profile__summary','contact')">
+                                    <i class="fas fa-address-card"></i>
+                                    <span class="tooltiptext">Contact</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </header>
+                <article class="profile">
+                    <%- include('./../partials/profileCard',{user:{...profile.basicDetails,photo:profile.about.photo}})
+                        %>
+                        <article class="profile__summary" id="profile__summary">
+                            <section class="profile__summary__item show" id="about">
+                                <%- include('./../partials/aboutDetails',{about:profile.about}) %>
+                                    <div class="services">
+                                        <div class="item_title">
+                                            <span class="gradientText">My</span>&nbsp;Services
+                                        </div>
+                                        <div class="item_container" id="myServicesContainer">
+                                            <% profile.services.forEach(service=> { %>
+                                                <%- include('./../partials/serviceBox',{service:service}) %>
+                                                    <% }) %>
+                                        </div>
+                                    </div>
+                                    <div class="fun_facts">
+                                        <div class="item_title">
+                                            <span class="gradientText">Fun</span>&nbsp;Facts
+                                        </div>
+                                        <div class="item_container">
+                                            <% profile.funfacts.forEach(funfact=> { %>
+                                                <%- include('./../partials/funfactBox',{funfact:funfact}) %>
+                                                    <% }) %>
+                                        </div>
+                                    </div>
+                                    <div class="quotes">
+                                        <div class="item_title">
+                                            <span class="gradientText">Q</span>uote
+                                        </div>
+                                        <div class="item_container">
+                                            <q class="quote">
+                                                <%= profile.quote %>
+                                            </q>
+                                        </div>
+                                    </div>
+                            </section>
+                            <section class="profile__summary__item hide" id="resume">
+                                <div class="item_title">
+                                    <span class="gradientText">R</span>esume
                                 </div>
-                                <div class="field">
-                                    <label for="mail" class="mail"><span class="gradientText">E</span>-mail</label>
-                                    <input type="email" name="email" id="email" required>
+                                <div class="item_container">
+                                    <div class="box4_title">
+                                        <span class="gradientText"><i
+                                                class="fas fa-book-reader"></i></span>&nbsp;Education
+                                    </div>
+                                    <div class="box4_container">
+                                        <% profile.educations.forEach(education=> { %>
+                                            <%- include('./../partials/educationBox',{education:education}) %>
+                                                <% }) %>
+                                    </div>
+                                    <div class="box4_title">
+                                        <span class="gradientText"><i
+                                                class="fas fa-briefcase"></i></span>&nbsp;Experience
+                                    </div>
+                                    <div class="box4_container">
+                                        <% profile.experiences.forEach(experience=> { %>
+                                            <%- include('./../partials/experienceBox',{experience:experience}) %>
+                                                <% }) %>
+                                    </div>
+                                    <div class="box4_title">
+                                        <span class="gradientText"><i class="fas fa-language"></i></span>&nbsp;Languages
+                                    </div>
+                                    <div class="box4_container">
+                                        <% profile.languages.forEach(language=> { %>
+                                            <%- include('./../partials/languageBox',{language:language}) %>
+                                                <% }) %>
+                                    </div>
+                                    <div class="box4_title">
+                                        <span class="gradientText"><i class="fas fa-laptop-code"></i></span>&nbsp;Coding
+                                    </div>
+                                    <div class="box4_container">
+                                        <% profile.codes.forEach(code=> { %>
+                                            <%- include('./../partials/codeBox',{code:code}) %>
+                                                <% }) %>
+                                    </div>
                                 </div>
-                                <div class="area_field">
-                                    <label for="contact_message" class="contact_message"><span
-                                            class="gradientText">M</span>essage</label>
-                                    <textarea name="message" id="contact_message" required></textarea>
+                            </section>
+                            <section class="profile__summary__item hide" id="contact">
+                                <div class="item_title">
+                                    <span class="gradientText">Contact</span>&nbsp;Form
                                 </div>
-                                <button type="submit"><i class="fas fa-paper-plane"></i>&nbsp;&nbsp;Send
-                                    Message</button>
-                            </form>
-                        </div>
-                    </section>
+                                <div class="item_container">
+                                    <form class="contact_form" id="contact_form"
+                                        onsubmit="sendMessage(event,'<%= profile.id %>')">
+                                        <div class="field">
+                                            <label for="name" class="name"><span
+                                                    class="gradientText">N</span>ame</label>
+                                            <input type="text" name="name" id="name" required>
+                                        </div>
+                                        <div class="field">
+                                            <label for="mail" class="mail"><span
+                                                    class="gradientText">E</span>-mail</label>
+                                            <input type="email" name="email" id="email" required>
+                                        </div>
+                                        <div class="area_field">
+                                            <label for="contact_message" class="contact_message"><span
+                                                    class="gradientText">M</span>essage</label>
+                                            <textarea name="message" id="contact_message" required></textarea>
+                                        </div>
+                                        <button type="submit"><i class="fas fa-paper-plane"></i>&nbsp;&nbsp;Send
+                                            Message</button>
+                                    </form>
+                                </div>
+                            </section>
+                        </article>
                 </article>
             </article>
-        </article>
     </main>
 </body>
 

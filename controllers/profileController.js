@@ -181,7 +181,9 @@ exports.sendMessage = (req, res, next) => {
   const response = new Response(
     req.body.name,
     req.body.email,
-    req.body.message
+    req.body.message,
+    false,
+    new Date()
   );
   profile
     .findById(profileId)
@@ -210,3 +212,69 @@ exports.sendMessage = (req, res, next) => {
       });
     });
 };
+
+exports.markAsRead=(req,res,next)=>{
+  const messsageId=req.query.id;
+  profile.findById(req.session.user.profile)
+  .then(profileR=>{
+    profileR.responses.id(messsageId).status=true;
+    return profileR.save();
+  }).then(profileR=>{
+    if(profileR){
+      const message = new Message(
+        "success",
+        "Message marked as read successfully."
+      );
+      req.flash("message", message);
+      res.redirect("/edit/updateProfile");
+    }else{
+      const message = new Message(
+        "warn",
+        "Message failed to marked as read."
+      );
+      req.flash("message", message);
+      res.redirect("/edit/updateProfile");
+    }
+  }).catch(error=>{
+    console.log(error);
+    const message = new Message(
+      "success",
+      "Error occured while marking as read."
+    );
+    req.flash("message", message);
+    res.redirect("/edit/updateProfile");
+  });
+}
+
+exports.markAsUnRead=(req,res,next)=>{
+  const messsageId=req.query.id;
+  profile.findById(req.session.user.profile)
+  .then(profileR=>{
+    profileR.responses.id(messsageId).status=false;
+    return profileR.save();
+  }).then(profileR=>{
+    if(profileR){
+      const message = new Message(
+        "success",
+        "Message marked as unread successfully."
+      );
+      req.flash("message", message);
+      res.redirect("/edit/updateProfile");
+    }else{
+      const message = new Message(
+        "warn",
+        "Message failed to marked as unread."
+      );
+      req.flash("message", message);
+      res.redirect("/edit/updateProfile");
+    }
+  }).catch(error=>{
+    console.log(error);
+    const message = new Message(
+      "success",
+      "Error occured while marking as unread."
+    );
+    req.flash("message", message);
+    res.redirect("/edit/updateProfile");
+  });
+}

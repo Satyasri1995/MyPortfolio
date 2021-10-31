@@ -9,5 +9,6 @@ router.post("/education", authGuard, deleteController.deleteEducation);
 router.post("/experience", authGuard, deleteController.deleteExperience);
 router.post("/language", authGuard, deleteController.deleteLanguage);
 router.post("/code", authGuard, deleteController.deleteCode);
+router.post("/message",authGuard,deleteController.deleteMessage);
 
 module.exports = router;
