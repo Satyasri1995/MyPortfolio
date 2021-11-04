@@ -44,8 +44,8 @@
             </ul>
         </div>
         <div class="profile__card__contacts__buttons">
-            <button class="profileBtn">Download Resume</button>
-            <button class="profileBtn">Contact Me</button>
+            <a class="profileBtn" href="<%= user.resume_link %>" target="_blank">Download Resume</a>
+            <a class="profileBtn" onclick="toggleMenu('profile__summary','contact')">Contact Me</a>
         </div>
     </div>
 </section>

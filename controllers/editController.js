@@ -88,7 +88,8 @@ exports.editBasicDetails = (req, res, next) => {
     req.body.email,
     req.body.phone,
     req.body.phone_alt,
-    req.body.location
+    req.body.location,
+    req.body.resume_link
   );
   user
     .findById(req.session.user)
@@ -99,6 +100,7 @@ exports.editBasicDetails = (req, res, next) => {
       userR.phone = basicDetails.phone;
       userR.phone_alt = basicDetails.phone_alt;
       userR.location = basicDetails.location;
+      userR.resume_link=basicDetails.resume_link;
       return userR.save();
     })
     .then((userR) => {

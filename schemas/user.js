@@ -26,6 +26,10 @@ const userSchema = new Schema({
     type: String,
     required: false,
   },
+  resume_link:{
+    type: String,
+    required: false,
+  },
   password:{
       type:mongoose.SchemaTypes.String,
       required:true
