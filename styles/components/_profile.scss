@@ -124,6 +124,7 @@
     left: -1rem;
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
     overflow-y: scroll;
+    width:100%;
     & .item_title {
       font-size: $text-xl;
       padding: 1rem 0rem;
@@ -153,7 +154,7 @@
     }
   }
   &__item.show {
-    width: 100%;
+    width:auto;
     opacity: 1;
    pointer-events: auto;
   }

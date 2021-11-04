@@ -24,12 +24,13 @@
                 <li class="bubbles__bubble"></li>
                 <li class="bubbles__bubble"></li>
             </ul>
+            <%- include('./../partials/message',{status:message.status,message:message.message}) %> 
+            <article class="account_edit">
+                <%- include('./../partials/edit',{profile:profile}) %> 
+            </article>
         </div>
     </div>
-    <%- include('./../partials/message',{status:message.status,message:message.message}) %> 
-    <article class="account_edit">
-        <%- include('./../partials/edit',{profile:profile}) %> 
-    </article>
+   
 </body>
 
 </html>

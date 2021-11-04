@@ -25,6 +25,10 @@
                 let words = "<%= profile.basicDetails.stack %>";
                 words = words.split(',')
                 typingEffect('typeText', words);
+                let back=document.getElementsByClassName("background")[0];
+                if(window.innerHeight>back.clientHeight){
+                    back.style.height=window.innerHeight+"px";
+                }
             });
         </script>
 </head>
@@ -38,11 +42,7 @@
                 <li class="bubbles__bubble"></li>
                 <li class="bubbles__bubble"></li>
             </ul>
-        </div>
-    </div>
-    <main>
-        <%- include('./../partials/message',{status:'',message:''}) %>
-            <article class="container">
+            <main>
                 <header class="header">
                     <nav class="navBar">
                         <ul class="navBar__list">
@@ -67,115 +67,119 @@
                         </ul>
                     </nav>
                 </header>
-                <article class="profile">
-                    <%- include('./../partials/profileCard',{user:{...profile.basicDetails,photo:profile.about.photo}})
-                        %>
-                        <article class="profile__summary" id="profile__summary">
-                            <section class="profile__summary__item show" id="about">
-                                <%- include('./../partials/aboutDetails',{about:profile.about}) %>
-                                    <div class="services">
+                <%- include('./../partials/message',{status:'',message:''}) %>
+                    <article class="container">
+                        <article class="profile">
+                            <%- include('./../partials/profileCard',{user:{...profile.basicDetails,photo:profile.about.photo}})
+                                %>
+                                <article class="profile__summary" id="profile__summary">
+                                    <section class="profile__summary__item show" id="about">
+                                        <%- include('./../partials/aboutDetails',{about:profile.about}) %>
+                                            <div class="services">
+                                                <div class="item_title">
+                                                    <span class="gradientText">My</span>&nbsp;Services
+                                                </div>
+                                                <div class="item_container" id="myServicesContainer">
+                                                    <% profile.services.forEach(service=> { %>
+                                                        <%- include('./../partials/serviceBox',{service:service}) %>
+                                                            <% }) %>
+                                                </div>
+                                            </div>
+                                            <div class="fun_facts">
+                                                <div class="item_title">
+                                                    <span class="gradientText">Fun</span>&nbsp;Facts
+                                                </div>
+                                                <div class="item_container">
+                                                    <% profile.funfacts.forEach(funfact=> { %>
+                                                        <%- include('./../partials/funfactBox',{funfact:funfact}) %>
+                                                            <% }) %>
+                                                </div>
+                                            </div>
+                                            <div class="quotes">
+                                                <div class="item_title">
+                                                    <span class="gradientText">Q</span>uote
+                                                </div>
+                                                <div class="item_container">
+                                                    <q class="quote">
+                                                        <%= profile.quote %>
+                                                    </q>
+                                                </div>
+                                            </div>
+                                    </section>
+                                    <section class="profile__summary__item hide" id="resume">
                                         <div class="item_title">
-                                            <span class="gradientText">My</span>&nbsp;Services
-                                        </div>
-                                        <div class="item_container" id="myServicesContainer">
-                                            <% profile.services.forEach(service=> { %>
-                                                <%- include('./../partials/serviceBox',{service:service}) %>
-                                                    <% }) %>
-                                        </div>
-                                    </div>
-                                    <div class="fun_facts">
-                                        <div class="item_title">
-                                            <span class="gradientText">Fun</span>&nbsp;Facts
+                                            <span class="gradientText">R</span>esume
                                         </div>
                                         <div class="item_container">
-                                            <% profile.funfacts.forEach(funfact=> { %>
-                                                <%- include('./../partials/funfactBox',{funfact:funfact}) %>
-                                                    <% }) %>
+                                            <div class="box4_title">
+                                                <span class="gradientText"><i
+                                                        class="fas fa-book-reader"></i></span>&nbsp;Education
+                                            </div>
+                                            <div class="box4_container">
+                                                <% profile.educations.forEach(education=> { %>
+                                                    <%- include('./../partials/educationBox',{education:education}) %>
+                                                        <% }) %>
+                                            </div>
+                                            <div class="box4_title">
+                                                <span class="gradientText"><i
+                                                        class="fas fa-briefcase"></i></span>&nbsp;Experience
+                                            </div>
+                                            <div class="box4_container">
+                                                <% profile.experiences.forEach(experience=> { %>
+                                                    <%- include('./../partials/experienceBox',{experience:experience}) %>
+                                                        <% }) %>
+                                            </div>
+                                            <div class="box4_title">
+                                                <span class="gradientText"><i class="fas fa-language"></i></span>&nbsp;Languages
+                                            </div>
+                                            <div class="box4_container">
+                                                <% profile.languages.forEach(language=> { %>
+                                                    <%- include('./../partials/languageBox',{language:language}) %>
+                                                        <% }) %>
+                                            </div>
+                                            <div class="box4_title">
+                                                <span class="gradientText"><i class="fas fa-laptop-code"></i></span>&nbsp;Coding
+                                            </div>
+                                            <div class="box4_container">
+                                                <% profile.codes.forEach(code=> { %>
+                                                    <%- include('./../partials/codeBox',{code:code}) %>
+                                                        <% }) %>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="quotes">
+                                    </section>
+                                    <section class="profile__summary__item hide" id="contact">
                                         <div class="item_title">
-                                            <span class="gradientText">Q</span>uote
+                                            <span class="gradientText">Contact</span>&nbsp;Form
                                         </div>
                                         <div class="item_container">
-                                            <q class="quote">
-                                                <%= profile.quote %>
-                                            </q>
+                                            <form class="contact_form" id="contact_form"
+                                                onsubmit="sendMessage(event,'<%= profile.id %>')">
+                                                <div class="field">
+                                                    <label for="name" class="name"><span
+                                                            class="gradientText">N</span>ame</label>
+                                                    <input type="text" name="name" id="name" required>
+                                                </div>
+                                                <div class="field">
+                                                    <label for="mail" class="mail"><span
+                                                            class="gradientText">E</span>-mail</label>
+                                                    <input type="email" name="email" id="email" required>
+                                                </div>
+                                                <div class="area_field">
+                                                    <label for="contact_message" class="contact_message"><span
+                                                            class="gradientText">M</span>essage</label>
+                                                    <textarea name="message" id="contact_message" required></textarea>
+                                                </div>
+                                                <button type="submit"><i class="fas fa-paper-plane"></i>&nbsp;&nbsp;Send
+                                                    Message</button>
+                                            </form>
                                         </div>
-                                    </div>
-                            </section>
-                            <section class="profile__summary__item hide" id="resume">
-                                <div class="item_title">
-                                    <span class="gradientText">R</span>esume
-                                </div>
-                                <div class="item_container">
-                                    <div class="box4_title">
-                                        <span class="gradientText"><i
-                                                class="fas fa-book-reader"></i></span>&nbsp;Education
-                                    </div>
-                                    <div class="box4_container">
-                                        <% profile.educations.forEach(education=> { %>
-                                            <%- include('./../partials/educationBox',{education:education}) %>
-                                                <% }) %>
-                                    </div>
-                                    <div class="box4_title">
-                                        <span class="gradientText"><i
-                                                class="fas fa-briefcase"></i></span>&nbsp;Experience
-                                    </div>
-                                    <div class="box4_container">
-                                        <% profile.experiences.forEach(experience=> { %>
-                                            <%- include('./../partials/experienceBox',{experience:experience}) %>
-                                                <% }) %>
-                                    </div>
-                                    <div class="box4_title">
-                                        <span class="gradientText"><i class="fas fa-language"></i></span>&nbsp;Languages
-                                    </div>
-                                    <div class="box4_container">
-                                        <% profile.languages.forEach(language=> { %>
-                                            <%- include('./../partials/languageBox',{language:language}) %>
-                                                <% }) %>
-                                    </div>
-                                    <div class="box4_title">
-                                        <span class="gradientText"><i class="fas fa-laptop-code"></i></span>&nbsp;Coding
-                                    </div>
-                                    <div class="box4_container">
-                                        <% profile.codes.forEach(code=> { %>
-                                            <%- include('./../partials/codeBox',{code:code}) %>
-                                                <% }) %>
-                                    </div>
-                                </div>
-                            </section>
-                            <section class="profile__summary__item hide" id="contact">
-                                <div class="item_title">
-                                    <span class="gradientText">Contact</span>&nbsp;Form
-                                </div>
-                                <div class="item_container">
-                                    <form class="contact_form" id="contact_form"
-                                        onsubmit="sendMessage(event,'<%= profile.id %>')">
-                                        <div class="field">
-                                            <label for="name" class="name"><span
-                                                    class="gradientText">N</span>ame</label>
-                                            <input type="text" name="name" id="name" required>
-                                        </div>
-                                        <div class="field">
-                                            <label for="mail" class="mail"><span
-                                                    class="gradientText">E</span>-mail</label>
-                                            <input type="email" name="email" id="email" required>
-                                        </div>
-                                        <div class="area_field">
-                                            <label for="contact_message" class="contact_message"><span
-                                                    class="gradientText">M</span>essage</label>
-                                            <textarea name="message" id="contact_message" required></textarea>
-                                        </div>
-                                        <button type="submit"><i class="fas fa-paper-plane"></i>&nbsp;&nbsp;Send
-                                            Message</button>
-                                    </form>
-                                </div>
-                            </section>
+                                    </section>
+                                </article>
                         </article>
-                </article>
-            </article>
-    </main>
+                    </article>
+            </main>
+        </div>
+    </div>
 </body>
 
 </html>

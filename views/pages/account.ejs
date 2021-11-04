@@ -7,11 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Page</title>
     <%- include("./../lib/lib") %>
-    <script>
-        window.addEventListener('load',function(){
-            checkMessage("<%= message.status?true:false %>");
-        })
-    </script>
+        <script>
+            window.addEventListener('load', function () {
+                checkMessage("<%= message.status?true:false %>");
+            })
+        </script>
 </head>
 
 <body class="full-viewport">
@@ -23,14 +23,15 @@
                 <li class="bubbles__bubble"></li>
                 <li class="bubbles__bubble"></li>
             </ul>
+            <%- include('./../partials/message',{status:message.status,message:message.message}) %>
+                <% if (showLogin) { %>
+                    <%- include('./../partials/login') %>
+                <% }else{ %>
+                    <%- include('./../partials/register') %>
+                <% } %>
         </div>
     </div>
-    <%- include('./../partials/message',{status:message.status,message:message.message}) %> 
-    <% if (showLogin) { %> 
-        <%- include('./../partials/login') %> 
-    <% }else{ %>
-        <%- include('./../partials/register') %>
-    <% } %>
+
 </body>
 
 </html>

@@ -15,11 +15,11 @@
   font-family: "Roboto", sans-serif;
 }
 
-.edit_Container{
+.edit_Container {
   position: absolute;
   top: 0%;
   left: 0%;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
   height: 80%;
   width: 50%;
 }
@@ -44,7 +44,7 @@
   padding: 5px 10px;
   border-radius: 6px;
   font-size: $text-md;
- 
+
   /* Position the tooltip text - see examples below! */
   position: absolute;
   top: 2rem;
@@ -52,7 +52,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 5;
-  transition: all .5s;
+  transition: all 0.5s;
   pointer-events: none;
 }
 
@@ -82,16 +82,79 @@
   background: $theme-color-dark;
 }
 
-.mt-2{
+.mt-2 {
   margin-top: 2rem;
 }
 
 .noselect {
   -webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none; /* Safari */
-     -khtml-user-select: none; /* Konqueror HTML */
-       -moz-user-select: none; /* Old versions of Firefox */
-        -ms-user-select: none; /* Internet Explorer/Edge */
-            user-select: none; /* Non-prefixed version, currently
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome, Edge, Opera and Firefox */
+}
+
+@media all and (max-width: 1000px) {
+  .container {
+    flex-direction: column;
+    padding-top: 5rem;
+  }
+  .profile{
+    &__card {
+      width: 20rem;
+      height: 30rem;
+    }
+    &__summary{
+      height: 30rem;
+    }
+  }
+  .header {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 5;
+    & .navBar {
+      width: 100%;
+      border-radius: 0px;
+      margin-right: 0px;
+      &__list {
+        flex-direction: row;
+        margin-right: 10px;
+        justify-content: end;
+      }
+    }
+  }
+}
+
+@media all and (max-width:800px) {
+  
+  .background{
+    height: unset;
+  }
+  .profile__summary__item.hide{
+    display: none;
+  }
+  .profile{
+    flex-direction: column;
+    &__summary{
+      &__item{
+        padding:unset;
+        width:20rem;
+        position:relative;
+        left: unset;
+      }
+    }
+  }
+  .profile{
+    &__card {
+      width: 25rem;
+      height: 35rem;
+    }
+    &__summary{
+      width: 25rem;
+      height: 35rem;
+    }
+  }
 }
