@@ -52,7 +52,7 @@ mongoose
     "mongodb+srv://SatyaApps:Satyasri1995@cluster0.ltyvt.mongodb.net/MyPortfolio?retryWrites=true&w=majority"
   )
   .then((result) => {
-    app.listen(3000);
+    app.listen(process.env.PORT||3000);
     console.log("Connected to Database !...");
   })
   .catch((error) => {
