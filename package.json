@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon app.js",
+    "start":"node app.js",
+    "nstart": "nodemon app.js",
     "sass": "node-sass --watch styles/main.scss --output public/css",
     "sass2": "node-sass  styles/main.scss --output public/css"
   },
