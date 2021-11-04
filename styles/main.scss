@@ -108,6 +108,9 @@
     }
     &__summary{
       height: 30rem;
+      &__item.show{
+        width: auto;
+      }
     }
   }
   .header {

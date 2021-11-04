@@ -24,16 +24,16 @@
     animation: linear 50s squares infinite;
     top: -50%; }
     .bubbles__bubble:nth-child(1) {
-      left: 76%;
+      left: 100%;
       animation-delay: 0s; }
     .bubbles__bubble:nth-child(2) {
-      left: 37%;
+      left: 77%;
       animation-delay: 10s; }
     .bubbles__bubble:nth-child(3) {
-      left: 61%;
+      left: 27%;
       animation-delay: 5s; }
     .bubbles__bubble:nth-child(4) {
-      left: 98%;
+      left: 74%;
       animation-delay: 15s; }
 
 main {
@@ -250,7 +250,7 @@ main {
             flex-direction: row;
             justify-content: space-between; }
   .profile__summary__item.show {
-    width: auto;
+    width: 100%;
     opacity: 1;
     pointer-events: auto; }
   .profile__summary__item.hide {
@@ -785,9 +785,11 @@ button[type='submit'] {
     height: 30rem; }
   .profile__summary {
     height: 30rem; }
+    .profile__summary__item.show {
+      width: auto; }
   .header {
     width: 100%;
-    position: absolute;
+    position: fixed;
     top: 0;
     z-index: 5; }
     .header .navBar {
