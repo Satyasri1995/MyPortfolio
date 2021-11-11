@@ -96,7 +96,14 @@
                                   supported by Chrome, Edge, Opera and Firefox */
 }
 
+@media all and (max-width:1056px){
+  .contact_form .field:first-child{
+    margin-right: 0px;
+  }
+}
+
 @media all and (max-width: 1000px) {
+  
   .container {
     flex-direction: column;
     padding-top: 5rem;
@@ -132,6 +139,11 @@
 }
 
 @media all and (max-width:800px) {
+
+  .container{
+    width:100%;
+    align-items: center;
+  }
   
   .background{
     height: unset;
@@ -147,6 +159,7 @@
         width:20rem;
         position:relative;
         left: unset;
+        padding-left: 1rem;
       }
     }
   }
@@ -159,5 +172,14 @@
       width: 25rem;
       height: 35rem;
     }
+  }
+}
+
+@media all and (max-width:500px) {
+  .profile__card,.profile__summary{
+    width:100%;
+  }
+  main{
+    padding: unset;
   }
 }

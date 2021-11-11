@@ -24,16 +24,16 @@
     animation: linear 50s squares infinite;
     top: -50%; }
     .bubbles__bubble:nth-child(1) {
-      left: 2%;
+      left: 14%;
       animation-delay: 0s; }
     .bubbles__bubble:nth-child(2) {
-      left: 81%;
+      left: 13%;
       animation-delay: 10s; }
     .bubbles__bubble:nth-child(3) {
-      left: 83%;
+      left: 8%;
       animation-delay: 5s; }
     .bubbles__bubble:nth-child(4) {
-      left: 58%;
+      left: 37%;
       animation-delay: 15s; }
 
 main {
@@ -781,6 +781,10 @@ button[type='submit'] {
   /* Non-prefixed version, currently
                                   supported by Chrome, Edge, Opera and Firefox */ }
 
+@media all and (max-width: 1056px) {
+  .contact_form .field:first-child {
+    margin-right: 0px; } }
+
 @media all and (max-width: 1000px) {
   .container {
     flex-direction: column;
@@ -807,6 +811,9 @@ button[type='submit'] {
         justify-content: end; } }
 
 @media all and (max-width: 800px) {
+  .container {
+    width: 100%;
+    align-items: center; }
   .background {
     height: unset; }
   .profile__summary__item.hide {
@@ -817,10 +824,17 @@ button[type='submit'] {
       padding: unset;
       width: 20rem;
       position: relative;
-      left: unset; }
+      left: unset;
+      padding-left: 1rem; }
   .profile__card {
     width: 25rem;
     height: 35rem; }
   .profile__summary {
     width: 25rem;
     height: 35rem; } }
+
+@media all and (max-width: 500px) {
+  .profile__card, .profile__summary {
+    width: 100%; }
+  main {
+    padding: unset; } }
