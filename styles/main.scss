@@ -145,7 +145,7 @@
     align-items: center;
   }
   
-  .background{
+  #profilePage .background{
     height: unset;
   }
   .profile__summary__item.hide{
@@ -181,5 +181,24 @@
   }
   main{
     padding: unset;
+  }
+}
+
+@media all and (max-width:400px){
+  #accountPage .account{
+    width:250px;
+  }
+}
+
+@media all and (max-width:1024px){
+  #editPage .account_edit{
+    width:95%;
+  }
+}
+
+@media all and (max-width:1400px){
+  .profile__summary__item .item_container .box{
+    flex: unset;
+    width: 100%;
   }
 }

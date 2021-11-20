@@ -24,16 +24,16 @@
     animation: linear 50s squares infinite;
     top: -50%; }
     .bubbles__bubble:nth-child(1) {
-      left: 14%;
+      left: 18%;
       animation-delay: 0s; }
     .bubbles__bubble:nth-child(2) {
-      left: 13%;
+      left: 99%;
       animation-delay: 10s; }
     .bubbles__bubble:nth-child(3) {
-      left: 8%;
+      left: 42%;
       animation-delay: 5s; }
     .bubbles__bubble:nth-child(4) {
-      left: 37%;
+      left: 18%;
       animation-delay: 15s; }
 
 main {
@@ -243,7 +243,7 @@ main {
       padding: 1rem 0rem;
       flex-direction: row; }
       .profile__summary__item .item_container .box {
-        width: 20rem;
+        flex: 1;
         display: flex;
         flex-direction: column; }
         .profile__summary__item .item_container .box .list {
@@ -549,6 +549,7 @@ button[type='submit'] {
   background-color: #f1f1f1;
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   align-items: center; }
 
 /* Style the buttons inside the tab */
@@ -814,7 +815,7 @@ button[type='submit'] {
   .container {
     width: 100%;
     align-items: center; }
-  .background {
+  #profilePage .background {
     height: unset; }
   .profile__summary__item.hide {
     display: none; }
@@ -838,3 +839,16 @@ button[type='submit'] {
     width: 100%; }
   main {
     padding: unset; } }
+
+@media all and (max-width: 400px) {
+  #accountPage .account {
+    width: 250px; } }
+
+@media all and (max-width: 1024px) {
+  #editPage .account_edit {
+    width: 95%; } }
+
+@media all and (max-width: 1400px) {
+  .profile__summary__item .item_container .box {
+    flex: unset;
+    width: 100%; } }

@@ -2,7 +2,13 @@
     var handleFileSelect = function (evt) {
         var files = evt.target.files;
         var file = files[0];
-
+        const size = Math.round(file.size/1024);
+        if(size>60){
+            document.getElementById("photo").innerHTML="";
+            document.getElementById("photop").value=null;
+            alert('File Size is too large file size should be less than 60kb');
+            return;
+        }
         if (files && file) {
             var reader = new FileReader();
 
